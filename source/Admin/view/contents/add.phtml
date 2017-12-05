@@ -1,0 +1,28 @@
+<h2>Conteúdos - Adicionar</h2>
+<form action='/admin/contents/save' method=post>
+	<?php $categories = $model->readCategories() ?>
+	<label for='i_category'>Categoria</label>
+	<select name='category' id='i_category'>
+		<option value=''>Selecione...</option>
+		<?php foreach($categories as $c): ?>
+			<option value='<?=$c->id?>'<?php if ($_POST['category'] == $c->id) echo ' selected="selected"' ?>><?=$c->description?></option>
+		<?php endforeach ?>
+	</select><br>
+	
+	<label for='i_description'>Descrição</label>
+	<input type=text value='<?=$_POST['description']?>' placeholder='Digite aqui' name='description' id='i_description'><br>
+	
+	<label for='i_date'>Data</label>
+	<input type='datetime-local' size=16 value='<?=$_POST['date']?>' name='date' id='i_date'><br>
+	
+	<label>Default Editor</label>
+	<div class='textarea'>
+		<textarea placeholder='Digite aqui' class='ckeditor' name='text' id='i_text'><?=$_POST['text']?></textarea>
+	</div>
+	
+	<div class='form-actions'>
+		<a href=# onclick='enviar_form(this.parentNode.parentNode, "save", event)'>Salvar</a>
+		<a href=# onclick='enviar_form(this.parentNode.parentNode, "savecontinue", event)'>Salvar e Continuar</a>
+		<a href='/admin/contents'>Cancelar</a>
+	</div>
+</form>

@@ -1,0 +1,14 @@
+<div><?=$error?></div>
+<form action='/admin/auth/logon' method=post>
+	<label>E-mail</label>
+	<input type=email placeholder='E-mail' name=email>
+	<br>
+	
+	<label>Senha</label>
+	<input type=password placeholder='Senha' name=password>
+	<br>
+
+	<div class='form-actions'>
+		<a href=# onclick='enviar_form(this.parentNode.parentNode, "save", event)'>Entrar</a>
+	</div>
+</form>

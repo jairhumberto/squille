@@ -1,0 +1,39 @@
+﻿<page title='<?=$page->title?>'>
+    <menus>
+        <?php foreach($model->readPageMenus($page->id) as $pagemenu):?>
+        <?php $menu = $model->readMenuById($pagemenu->menu) ?>
+    	<menu section='<?=$pagemenu->section?>' component='<?=$pagemenu->component?>' description='<?=$menu->description?>'>
+    	    <?php foreach($model->readMenuLinks($pagemenu->menu) as $menulink):?>
+    	    <link href='<?=$menulink->href?>'><?=$menulink->text?></link>
+    	    <?php endforeach?>
+    	</menu>
+    	<?php endforeach?>
+    </menus>
+
+    <categories>
+        <?php foreach($model->readPageCategories($page->id) as $pagecategory):?>
+        <?php $category = $model->readCategoryById($pagecategory->category) ?>
+    	<category section='<?=$pagecategory->section?>' component='<?=$pagecategory->component?>' description='<?=$category->description?>'>
+			<contents>
+				<?php foreach($model->readCategoryContents($pagecategory->category, $pagecategory->limit, $offset) as $categorycontent):?>
+				<content>
+					<?php $content = $model->readContentById($categorycontent->id)?>
+					<date><?=$content->date?></date>
+					<text><?=$content->text?></text>
+				</content>
+				<?php endforeach?>
+			</contents>
+    	</category>
+    	<?php endforeach?>
+    </categories>
+
+    <contents>
+    	<?php foreach($model->readPageContents($page->id) as $pagecontent):?>
+    	<content section='<?=$pagecontent->section?>' component='<?=$pagecontent->component?>'>
+    	    <?php $content = $model->readContentById($pagecontent->content)?>
+            <date><?=$content->date?></date>
+    	    <text><?=$content->text?></text>
+    	</content>
+    	<?php endforeach?>
+    </contents>
+</page>

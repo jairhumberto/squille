@@ -1,0 +1,29 @@
+<h2>Páginas</h2>
+<div class='form-actions'>
+	<a href='/admin/pages/add'>Adicionar</a>
+</div>
+<div class='grid'>
+	<table>
+		<thead>
+			<tr>
+				<th width='80'>#</th>
+				<th width='80'>Editar</th>
+				<th width='80'>Excluir</th>
+				<th>Título</th>
+				<th>Endereço</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php $c = $model->read() ?>
+			<?php foreach($c as $o): ?>
+			<tr>
+				<td><?=$o->id ?></td>
+				<td><a href='/admin/pages/edit/<?=$o->id?>'>Editar</a></td>
+				<td><a href=# onclick='return conditional_redirect(event, "/admin/pages/delete/<?=$o->id?>", "Tem certeza de que quer excluir a página \"<?=$o->title?>\"?")'>Excluir</a></td>
+				<td><?=$o->title ?></td>
+				<td><?=$o->token ?></td>
+			</tr>
+			<?php endforeach ?>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,54 @@
+<h2>Links - Adicionar</h2>
+<form action='/admin/links/save' method=post id='form-links'>
+	<?php $menus = $model->readMenus() ?>
+	<label for='i_menu'>Menus</label>
+	<select name='menu' id='i_menu'>
+		<option value=''>Selecione...</option>
+		<?php foreach($menus as $m): ?>
+			<option value='<?=$m->id?>'<?php if ($_POST['menu'] == $m->id) echo ' selected="selected"' ?>><?=$m->description?></option>
+		<?php endforeach ?>
+	</select><br>
+	
+	<label>Tipo</label>
+	<label>
+	<input type=radio name='tipo' value='interno'
+			<?php if($_POST['tipo'] != 'externo') echo 'checked'?>
+					onclick='link_externo_interno("interno")'> Interno</label>
+	<label>
+	<input type=radio name='tipo' value='externo'
+			<?php if($_POST['tipo'] == 'externo') echo 'checked'?>
+					onclick='link_externo_interno("externo")'> Externo</label><br>
+	
+	<?php $pages = $model->readPages() ?>
+	
+	<label for='i_href_select'>Href</label>
+	<select name='href' id='i_href_select'>
+		<option value=''>Selecione...</option>
+		<?php foreach($pages as $p): ?>
+		<option value='<?=$p->token?>'
+			<?php if ($_POST['href'] == $p->token) echo ' selected="selected"' ?>><?=$p->title?></option>
+		<?php endforeach ?>
+	</select>
+	
+	<label for='i_href_input'>Href</label>
+	<input type=text value='<?=$_POST['href'] ?>' placeholder='Digite aqui' name='href' id='i_href_input'>
+	
+	<br>
+	
+	<label for='i_text'>Texto</label>
+	<input type=text value='<?=$_POST['text']?>' placeholder='Digite aqui' name='text' id='i_text'><br>
+	
+	<div class='form-actions'>
+		<a href=# onclick='enviar_form(this.parentNode.parentNode, "save", event)'>Salvar</a>
+		<a href=# onclick='enviar_form(this.parentNode.parentNode, "savecontinue", event)'>Salvar e Continuar</a>
+		<a href='/admin/links'>Cancelar</a>
+	</div>
+	
+	<script type='text/javascript'>
+		<?php if($_POST['tipo'] == 'externo'): ?>
+			link_externo_interno('externo')
+		<?php else: ?>
+			link_externo_interno('interno')
+		<?php endif ?>
+	</script>
+</form>

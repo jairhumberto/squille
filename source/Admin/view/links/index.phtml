@@ -1,0 +1,34 @@
+<h2>Links</h2>
+<div class='form-actions'>
+	<a href='/admin/links/add'>Adicionar</a>
+</div>
+<div class='grid'>
+	<table>
+		<thead>
+			<tr>
+				<th width='80'>#</th>
+				<th width='80'>Editar</th>
+				<th width='80'>Excluir</th>
+				<th>Menu</th>
+				<th>Href</th>
+				<th>Texto</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php $c = $model->readLinks() ?>
+			<?php foreach($c as $o): ?>
+			<tr>
+				<td><?=$o->id ?></td>
+				<td><a href='/admin/links/edit/<?=$o->id?>'>Editar</a></td>
+				<td><a href=# onclick='return conditional_redirect(event, "/admin/links/delete/<?=$o->id?>", "Tem certeza de que quer excluir o link \"<?=$o->text?>\"?")'>Excluir</a></td>
+				
+				<?php $m = $model->readMenuById($o->menu) ?>
+				<td><?=$m->description ?></td>
+				
+				<td><?=$o->href ?></td>
+				<td><?=$o->text ?></td>
+			</tr>
+			<?php endforeach ?>
+		</tbody>
+	</table>
+</div>

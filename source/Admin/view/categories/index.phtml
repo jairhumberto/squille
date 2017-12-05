@@ -1,0 +1,28 @@
+<h2>Categorias</h2>
+<div class='form-actions'>
+	<a href='/admin/categories/add'>Adicionar</a>
+</div>
+<div class='grid'>
+	<table>
+		<thead>
+			<tr>
+				<th width='80'>#</th>
+				<th width='80'>Editar</th>
+				<th width='80'>Excluir</th>
+				<th>Descrição</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php $c = $model->read() ?>
+			<?php foreach($c as $o): ?>
+			<tr>
+				<td><?=$o->id ?></td>
+				<td><a href='/admin/categories/edit/<?=$o->id?>'>Editar</a></td>
+				<td><a href='#' onclick='conditional_redirect(event, "/admin/categories/delete/<?=$o->id?>", "Tem certeza de que quer excluir a categoria \"<?=$o->description?>\"?")'>Excluir</a></td>
+
+				<td><?=$o->description ?></td>
+			</tr>
+			<?php endforeach ?>
+		</tbody>
+	</table>
+</div>

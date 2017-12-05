@@ -1,0 +1,6 @@
+RewriteEngine On
+
+SetEnv environment "development"
+
+RewriteCond %{REQUEST_FILENAME} !(\.(gif|css|js|eot|svg|ttf|woff|png|jpg|swf|xsl|phpx|htm|mp3|ico)|file\-manager\.php)$
+RewriteRule ^(.*) index.php?path=/$1 [QSA]

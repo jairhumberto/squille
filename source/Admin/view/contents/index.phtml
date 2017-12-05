@@ -1,0 +1,33 @@
+<h2>Conteúdos</h2>
+<div class='form-actions'>
+	<a href='/admin/contents/add'>Adicionar</a>
+</div>
+<div class='grid'>
+	<table>
+		<thead>
+			<tr>
+				<th width='80'>#</th>
+				<th width='80'>Editar</th>
+				<th width='80'>Excluir</th>
+				<th>Descrição</th>
+				<th>Categoria</th>
+				<th>Data</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php $c = $model->readContents() ?>
+			<?php foreach($c as $o): ?>
+			<tr>
+				<td><?=$o->id ?></td>
+				<td><a href='/admin/contents/edit/<?=$o->id?>'>Editar</a></td>
+				<td><a href=# onclick='return conditional_redirect(event, "/admin/contents/delete/<?=$o->id?>", "Tem certeza de que quer excluir o conteúdo \"<?=$o->description?>\"?")'>Excluir</a></td>
+				<td><?=$o->description?></td>
+				
+				<?php $ct = $model->readCategoryById($o->category) ?>
+				<td><?=$ct->description?></td>
+				<td><?=$o->date?></td>
+			</tr>
+			<?php endforeach ?>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,24 @@
+<h2>Páginas - Adicionar</h2>
+<form action='/admin/pages/save' method=post>
+	<label for='i_token'>Endereço</label>
+	<input type=text value='<?=$_POST['token']?>' placeholder='Digite aqui' name='token' id='i_token'><br>
+	
+	<?php $layouts = $model->readXSLLayouts() ?>
+	<label for='i_layout'>Layout</label>
+	<select name='layout' id='i_layout'>
+		<option value=''>Selecione...</option>
+		<?php foreach($layouts as $l): ?>
+		<option value='<?=$l->name?>'
+				<?php if ($_POST['layout'] == $l->name) echo ' selected="selected"' ?>><?=$l->name?></option>
+		<?php endforeach ?>
+	</select><br>
+	
+	<label for='i_title'>Título</label>
+	<input type=text value='<?=$_POST['title']?>' placeholder='Digite aqui' name='title' id='i_title'><br>
+	
+	<div class='form-actions'>
+		<a href=# onclick='enviar_form(this.parentNode.parentNode, "save", event)'>Salvar</a>
+		<a href=# onclick='enviar_form(this.parentNode.parentNode, "savecontinue", event)'>Salvar e Continuar</a>
+		<a href='/admin/pages'>Cancelar</a>
+	</div>
+</form>
