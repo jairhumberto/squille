@@ -1,23 +1,23 @@
 [
     {
         "name": "squille/core",
-        "version": "v1.0.1",
-        "version_normalized": "1.0.1.0",
+        "version": "v1.1.0",
+        "version_normalized": "1.1.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/jairhumberto/Core.git",
-            "reference": "6959da4237d3e23d373edc2f3c5c88e777f6c7ed"
+            "reference": "ad2f86d210c42d02c80bedbff889c869715452d2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/jairhumberto/Core/zipball/6959da4237d3e23d373edc2f3c5c88e777f6c7ed",
-            "reference": "6959da4237d3e23d373edc2f3c5c88e777f6c7ed",
+            "url": "https://api.github.com/repos/jairhumberto/Core/zipball/ad2f86d210c42d02c80bedbff889c869715452d2",
+            "reference": "ad2f86d210c42d02c80bedbff889c869715452d2",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3"
         },
-        "time": "2017-12-10T01:51:22+00:00",
+        "time": "2017-12-10T02:47:21+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
