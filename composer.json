@@ -3,7 +3,7 @@
     "description": "Squille is a content management system",
     "type": "project",
     "require": {
-        "squille/core": "1.0.1"
+        "squille/core": "1.1.0"
     },
     "license": "MIT",
     "authors": [
