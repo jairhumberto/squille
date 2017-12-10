@@ -26,7 +26,10 @@ class IndexController extends ActionController {
         $xml->loadXML($content);
 
         $xsl = new \DOMDocument('1.0', 'UTF-8');
-        $xsl->load(PUBLIC_DIR . 'xsl' . DS . $page->layout . DS . 'layout.xsl');
+        $xsl->load($_SERVER['DOCUMENT_ROOT']
+                 . DIRECTORY_SEPARATOR . 'xsl'
+                 . DIRECTORY_SEPARATOR . $page->layout
+                 . DIRECTORY_SEPARATOR . 'layout.xsl');
 
         $proc = new \XSLTProcessor;
         $proc->importStyleSheet($xsl);
@@ -34,7 +37,10 @@ class IndexController extends ActionController {
         $xml2 = $proc->transformToDoc($xml);
 
         $xsl2 = new \DOMDocument('1.0', 'UTF-8');
-        $xsl2->load(PUBLIC_DIR . 'xsl' . DS . $page->layout . DS . 'components.xsl');
+        $xsl2->load($_SERVER['DOCUMENT_ROOT']
+                  . DIRECTORY_SEPARATOR . 'xsl'
+                  . DIRECTORY_SEPARATOR . $page->layout
+                  . DIRECTORY_SEPARATOR . 'components.xsl');
 
         $proc2 = new \XSLTProcessor();
         $proc2->importStylesheet($xsl2);
