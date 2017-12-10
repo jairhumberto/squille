@@ -1,0 +1,16 @@
+{
+    "name": "squille/squille",
+    "description": "Squille is a content management system",
+    "type": "project",
+    "require": {
+        "squille/core": "1.0.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jair Humberto",
+            "email": "jairhumberto@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}

@@ -6,4 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Squille\\Core\\' => array($vendorDir . '/squille/core/src'),
 );

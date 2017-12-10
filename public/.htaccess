@@ -1,6 +1,16 @@
 RewriteEngine On
 
-SetEnv environment "development"
+#
+# Files that will not be parsed by the Squille: *.ico, *.xsl and
+# file-manager.php. You can include here more extentions beside ico and xsl,
+# but you should not remove the file-manager.php rule.
+#
+# Its recomend to use a cdn for assets files, instead of place them into the same
+# project.
+#
+RewriteCond %{REQUEST_FILENAME} !(\.(xsl|ico)|file\-manager\.php)$
 
-RewriteCond %{REQUEST_FILENAME} !(\.(gif|css|js|eot|svg|ttf|woff|png|jpg|swf|xsl|phpx|htm|mp3|ico)|file\-manager\.php)$
+#
+# Avoid changing this.
+#
 RewriteRule ^(.*) index.php?path=/$1 [QSA]
