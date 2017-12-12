@@ -18,5 +18,9 @@
         "psr-4": {
             "": "source"
         }
+    },
+    "scripts": {
+        "post-install-cmd": "cave run",
+        "post-update-cmd": "cave run"
     }
 }
