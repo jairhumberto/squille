@@ -3,7 +3,8 @@
     "description": "Squille is a content management system",
     "type": "project",
     "require": {
-        "squille/core": "1.0.0"
+        "squille/core": "1.0.0",
+        "squille/cave": "dev-master"
     },
     "license": "MIT",
     "authors": [
@@ -12,7 +13,7 @@
             "email": "jairhumberto@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "": "source"
