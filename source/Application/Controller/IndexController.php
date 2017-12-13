@@ -16,10 +16,11 @@ class IndexController extends ActionController {
         $page = $model->readPageByToken($args->get('path'));
         $view->addVariable('page', $page);
         $view->addVariable('offset', $args->get('offset'));
-		
-		//header('Content-type: text/xml');
-		//$view->display();die;
-		
+
+        // Here for debug reasons.
+        // header('Content-type: text/xml');
+        // $view->display();die;
+
         $content = $this->getDisplayContent($view);
 
         $xml = new \DOMDocument('1.0', 'UTF-8');
