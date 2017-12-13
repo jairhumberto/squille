@@ -27,7 +27,8 @@ class IndexController extends ActionController {
 
         $xsl = new \DOMDocument('1.0', 'UTF-8');
         $xsl->load($_SERVER['DOCUMENT_ROOT']
-                 . DIRECTORY_SEPARATOR . 'xsl'
+                 . DIRECTORY_SEPARATOR . '..'
+                 . DIRECTORY_SEPARATOR . 'templates'
                  . DIRECTORY_SEPARATOR . $page->layout
                  . DIRECTORY_SEPARATOR . 'layout.xsl');
 
@@ -38,7 +39,8 @@ class IndexController extends ActionController {
 
         $xsl2 = new \DOMDocument('1.0', 'UTF-8');
         $xsl2->load($_SERVER['DOCUMENT_ROOT']
-                  . DIRECTORY_SEPARATOR . 'xsl'
+                  . DIRECTORY_SEPARATOR . '..'
+                  . DIRECTORY_SEPARATOR . 'templates'
                   . DIRECTORY_SEPARATOR . $page->layout
                   . DIRECTORY_SEPARATOR . 'components.xsl');
 

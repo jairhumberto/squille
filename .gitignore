@@ -1,4 +1,8 @@
 composer.lock
-/vendor/*
+
+vendor
+templates/*
+!templates/sample
+
 */config.php
 **/routes.php
