@@ -9,9 +9,9 @@ return array(
 
     // Squille database basic configurations.
     'database' => array(
-        'dbhost' => 'localhost',
-        'dbname' => 'test',
-        'dbuser' => 'root',
-        'dbpassword' => ''
+        'dbhost' => 'server',
+        'dbname' => 'database',
+        'dbuser' => 'user',
+        'dbpassword' => 'password'
     )
 );
