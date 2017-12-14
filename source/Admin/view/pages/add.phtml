@@ -9,12 +9,12 @@
 		<option value=''>Selecione...</option>
 		<?php foreach($layouts as $l): ?>
 		<option value='<?=$l->name?>'
-				<?php if ($_POST['layout'] == $l->name) echo ' selected="selected"' ?>><?=$l->name?></option>
+				<?php if (isset($_POST['layout']) && $_POST['layout'] == $l->name) echo ' selected="selected"' ?>><?=$l->name?></option>
 		<?php endforeach ?>
 	</select><br>
 	
 	<label for='i_title'>Título</label>
-	<input type=text value='<?=$_POST['title']?>' placeholder='Digite aqui' name='title' id='i_title'><br>
+	<input type=text value='<?=isset($_POST['title']) ? $_POST['title'] : ''?>' placeholder='Digite aqui' name='title' id='i_title'><br>
 	
 	<div class='form-actions'>
 		<a href=# onclick='enviar_form(this.parentNode.parentNode, "save", event)'>Salvar</a>
