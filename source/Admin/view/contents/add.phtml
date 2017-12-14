@@ -5,19 +5,19 @@
 	<select name='category' id='i_category'>
 		<option value=''>Selecione...</option>
 		<?php foreach($categories as $c): ?>
-			<option value='<?=$c->id?>'<?php if ($_POST['category'] == $c->id) echo ' selected="selected"' ?>><?=$c->description?></option>
+			<option value='<?=$c->id?>'<?php if (isset($_POST['category']) && $_POST['category'] == $c->id) echo ' selected="selected"' ?>><?=$c->description?></option>
 		<?php endforeach ?>
 	</select><br>
 	
 	<label for='i_description'>Descrição</label>
-	<input type=text value='<?=$_POST['description']?>' placeholder='Digite aqui' name='description' id='i_description'><br>
+	<input type=text value='<?=isset($_POST['description']) ? $_POST['description'] : ''?>' placeholder='Digite aqui' name='description' id='i_description'><br>
 	
 	<label for='i_date'>Data</label>
-	<input type='datetime-local' size=16 value='<?=$_POST['date']?>' name='date' id='i_date'><br>
+	<input type='datetime-local' size=16 value='<?=isset($_POST['date']) && $_POST['date']: ''?>' name='date' id='i_date'><br>
 	
 	<label>Default Editor</label>
 	<div class='textarea'>
-		<textarea placeholder='Digite aqui' class='ckeditor' name='text' id='i_text'><?=$_POST['text']?></textarea>
+		<textarea placeholder='Digite aqui' class='ckeditor' name='text' id='i_text'><?=isset($_POST['text']) && $_POST['text'] : ''?></textarea>
 	</div>
 	
 	<div class='form-actions'>

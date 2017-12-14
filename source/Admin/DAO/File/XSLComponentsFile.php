@@ -5,7 +5,12 @@ use Squille\Core\Collection;
 
 class XSLComponentsFile {
     public function readContentsByLayout($layout) {
-        $fullpath = PUBLIC_DIR . 'xsl' . DS . $layout . DS . 'components.xsl';
+        $fullpath = $_SERVER['DOCUMENT_ROOT']
+                  . DIRECTORY_SEPARATOR . '..'
+                  . DIRECTORY_SEPARATOR . 'templates'
+                  . DIRECTORY_SEPARATOR . $layout
+                  . DIRECTORY_SEPARATOR . 'components.xsl';
+
         $dom = new \DOMDocument();
         $dom->load($fullpath);
 
@@ -23,7 +28,12 @@ class XSLComponentsFile {
     }
 	
     public function readCategoriesByLayout($layout) {
-        $fullpath = PUBLIC_DIR . 'xsl' . DS . $layout . DS . 'components.xsl';
+        $fullpath = $_SERVER['DOCUMENT_ROOT']
+                  . DIRECTORY_SEPARATOR . '..'
+                  . DIRECTORY_SEPARATOR . 'templates'
+                  . DIRECTORY_SEPARATOR . $layout
+                  . DIRECTORY_SEPARATOR . 'components.xsl';
+
         $dom = new \DOMDocument();
         $dom->load($fullpath);
 
@@ -41,7 +51,12 @@ class XSLComponentsFile {
     }
 
     public function readMenusByLayout($layout) {
-        $fullpath = PUBLIC_DIR . 'xsl' . DS . $layout . DS . 'components.xsl';
+        $fullpath = $_SERVER['DOCUMENT_ROOT']
+                  . DIRECTORY_SEPARATOR . '..'
+                  . DIRECTORY_SEPARATOR . 'templates'
+                  . DIRECTORY_SEPARATOR . $layout
+                  . DIRECTORY_SEPARATOR . 'components.xsl';
+
         $dom = new \DOMDocument();
         $dom->load($fullpath);
 

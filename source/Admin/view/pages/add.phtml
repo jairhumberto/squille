@@ -1,7 +1,7 @@
 <h2>Páginas - Adicionar</h2>
 <form action='/admin/pages/save' method=post>
 	<label for='i_token'>Endereço</label>
-	<input type=text value='<?=$_POST['token']?>' placeholder='Digite aqui' name='token' id='i_token'><br>
+	<input type=text value='<?=isset($_POST['token']) ? $_POST['token'] : ''?>' placeholder='Digite aqui' name='token' id='i_token'><br>
 	
 	<?php $layouts = $model->readXSLLayouts() ?>
 	<label for='i_layout'>Layout</label>

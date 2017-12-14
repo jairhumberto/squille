@@ -5,7 +5,12 @@ use Squille\Core\Collection;
 
 class XSLSectionsFile {
     public function readByLayout($layout) {
-        $fullpath = PUBLIC_DIR . 'xsl' . DS . $layout . DS . 'layout.xsl';
+        $fullpath = $_SERVER['DOCUMENT_ROOT']
+                  . DIRECTORY_SEPARATOR . '..'
+                  . DIRECTORY_SEPARATOR . 'templates'
+                  . DIRECTORY_SEPARATOR . $page->layout
+                  . DIRECTORY_SEPARATOR . 'layout.xsl';
+
         $dom = new \DOMDocument();
         $dom->load($fullpath);
 

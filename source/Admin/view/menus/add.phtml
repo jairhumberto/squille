@@ -1,7 +1,7 @@
 <h2>Menus - Adicionar</h2>
 <form action='/admin/menus/save' method=post>
 	<label for='i_description'>Descrição</label>
-	<input type=text value='<?=$_POST['description']?>' placeholder='Digite aqui' name='description' id='i_description'><br>
+	<input type=text value='<?=isset($_POST['description']) ? $_POST['description'] : ''?>' placeholder='Digite aqui' name='description' id='i_description'><br>
 	
 	<div class='form-actions'>
 		<a href=# onclick='enviar_form(this.parentNode.parentNode, "save", event)'>Salvar</a>
