@@ -37,29 +37,18 @@
     </xsl:template>
 
     <!-- componentes gerais -->
-    <xsl:template match="content[@component='banner']" tpl:content="banner">
-        <div data-src='{text//img/@src}'><xsl:comment/></div>
-    </xsl:template>
-
-    <xsl:template match="content[@component='raw']" tpl:content="raw">
+    <xsl:template match="content[@component='as-is']" tpl:content="as-is">
         <xsl:copy-of select='text/node()'/>
     </xsl:template>
     <!-- componentes gerais -->
 
     <!-- componentes de categorias -->
-    <xsl:template match="category[@component='categoria-de-produto']" tpl:category="categoria-de-produto">
+    <xsl:template match="category[@component='categoria-example']" tpl:category="categoria-example">
         <section class='category'>
             <h2><a name='{@description}'><xsl:comment/></a><xsl:value-of select='@description'/></h2>
             <div class='itens'>
                 <xsl:for-each select="contents/content">
-                    <div class='item'>
-                        <a href='{text//img[1]/@src}' class='fancybox'>
-                            <div class='image'>
-                                <img src='{text//img[1]/@src}' alt='{text/h1}'/>
-                            </div>
-                            <p class='info'><xsl:value-of select='text/h1'/></p>
-                        </a>
-                    </div>
+                    <h3>Subtitle</h3>
                 </xsl:for-each>
             </div>
         </section>
@@ -70,7 +59,7 @@
     <xsl:template match="menu[@component='horizontal-dotted']" tpl:menu="horizontal-dotted">
         <ul class='dot-separated'>
             <xsl:for-each select='link'>
-                <li><a href='{@href}' class='scroller'><xsl:value-of select='text()'/></a></li>
+                <li><a href='{@href}'><xsl:value-of select='text()'/></a></li>
             </xsl:for-each>
         </ul>
     </xsl:template>
