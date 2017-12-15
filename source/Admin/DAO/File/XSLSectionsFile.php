@@ -8,7 +8,7 @@ class XSLSectionsFile {
         $fullpath = $_SERVER['DOCUMENT_ROOT']
                   . DIRECTORY_SEPARATOR . '..'
                   . DIRECTORY_SEPARATOR . 'templates'
-                  . DIRECTORY_SEPARATOR . $page->layout
+                  . DIRECTORY_SEPARATOR . $layout
                   . DIRECTORY_SEPARATOR . 'layout.xsl';
 
         $dom = new \DOMDocument();
@@ -22,8 +22,12 @@ class XSLSectionsFile {
         foreach ($nl as $n) {
             $e = new \stdClass;
             $e->name = $n->value;
-            $c->append($e);
+
+            if ($c->valueExists($e) === false) {
+                $c->append($e);
+            }
         }
+
         return $c;
     }
 }

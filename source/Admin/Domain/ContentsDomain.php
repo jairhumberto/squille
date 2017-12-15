@@ -19,11 +19,13 @@ class ContentsDomain {
         $dao = new ContentsDB;
         $e = $dao->readById($id);
 
-		// Transforma o formato americano de data no formato aceito pelo componente datetime-local
-		list($y, $m, $d, $h, $i, $s) = preg_split('/[: -]/', $e->date);
-        $time = mktime($h, $i, $s, $m, $d, $y);
-        //$e->date = date('d F Y - H:i', $time); // Antigo formato suportado pelo chrome.
-        $e->date = date('Y-m-d\TH:i:s', $time);
+        if ($e) {
+            // Transforma o formato americano de data no formato aceito pelo componente datetime-local
+            list($y, $m, $d, $h, $i, $s) = preg_split('/[: -]/', $e->date);
+            $time = mktime($h, $i, $s, $m, $d, $y);
+            //$e->date = date('d F Y - H:i', $time); // Antigo formato suportado pelo chrome.
+            $e->date = date('Y-m-d\TH:i:s', $time);
+        }
 
         return $e;
     }
