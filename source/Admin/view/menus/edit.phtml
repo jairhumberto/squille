@@ -1,90 +1,117 @@
+<?php
+/**
+ * Squille (https://github.com/jairhumberto/Squille)
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 Jair Humberto
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+?>
 <?php $o = $model->readMenuById($id) ?>
 <h2>Menus - Editar</h2>
 <form action='/admin/menus/save' method=post>
-	<input type=hidden value='<?=$o->id?>' name='id'>
-	<label for='i_description'>Descrição</label>
-	<input type=text value='<?=!empty($_POST['description']) ? $_POST['description'] : $o->description ?>' placeholder='Digite aqui' name='description' id='i_description'><br>
+    <input type=hidden value='<?=$o->id?>' name='id'>
+    <label for='i_description'>Descrição</label>
+    <input type=text value='<?=!empty($_POST['description']) ? $_POST['description'] : $o->description ?>' placeholder='Digite aqui' name='description' id='i_description'><br>
 
-	<div class='form-actions'>
-		<a href=# onclick='enviar_form(this.parentNode.parentNode, "save", event)'>Salvar</a>
-		<a href=# onclick='enviar_form(this.parentNode.parentNode, "savecontinue", event)'>Salvar e Continuar</a>
-		<a href='/admin/menus'>Cancelar</a>
-	</div>
+    <div class='form-actions'>
+        <a href=# onclick='enviar_form(this.parentNode.parentNode, "save", event)'>Salvar</a>
+        <a href=# onclick='enviar_form(this.parentNode.parentNode, "savecontinue", event)'>Salvar e Continuar</a>
+        <a href='/admin/menus'>Cancelar</a>
+    </div>
 </form>
-		
+
 <h2>Páginas</h2>
 <form action='/admin/pages-menus/bind' method=post>
-	<div class='form-body'>
-		<table>
-			<thead>
-				<tr>
-					<th width='2%'><input type=checkbox onchange='check_all(this)'></th>
-					<th>Endereço</th>
-					<th>Título</th>
-					<th>Ordem</th>
-					<th>Seção</th>
-					<th>Tipo</th>
-					<th>Fixo</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php $c = $model->readPages() ?>
-				<?php $l = $model->readPagesByMenu($o->id) ?>
+    <div class='form-body'>
+        <table>
+            <thead>
+                <tr>
+                    <th width='2%'><input type=checkbox onchange='check_all(this)'></th>
+                    <th>Endereço</th>
+                    <th>Título</th>
+                    <th>Ordem</th>
+                    <th>Seção</th>
+                    <th>Tipo</th>
+                    <th>Fixo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $c = $model->readPages() ?>
+                <?php $l = $model->readPagesByMenu($o->id) ?>
 
-				<?php foreach($c as $key => $p): ?>
-				<tr>
-					<?php
-						$checked = ' ';
-						$r = null;
+                <?php foreach($c as $key => $p): ?>
+                <tr>
+                    <?php
+                        $checked = ' ';
+                        $r = null;
 
-						foreach($l as $q)
-						if ($p->id == $q->page) {
-							$r = $q;
-							$checked = ' checked';
-							break;
-						}
-					?>
-					<td><input type=checkbox value='<?=$r->id?>' name='id[<?=$key?>]'<?=$checked?>></td>
-					
-					<input type=hidden name='page[<?=$key?>]' value='<?=$p->id?>'>
-					<input type=hidden name='menu' value='<?=$o->id?>'>
-					
-					<td><?=$p->token ?></td>
-					<td><?=$p->title ?></td>
-					<td><input type=text name='order[<?=$key?>]' value='<?=$r ? $r->order : ''?>'></td>
-					
-					<?php $sections = $model->readSectionByLayout($p->layout) ?>
-					<td>
-						<select name='section[<?=$key?>]'>
-							<option value=''>Selecione...</option>
-							<?php foreach($sections as $s): ?>
-							<option value='<?=$s->name?>'
-								<?php if (($r && !empty($_POST['section'][$r->id]) && $_POST['section'][$r->id] == $s->name)
-										  || ($r && empty($_POST['section'][$r->id]) && $r->section == $s->name)) echo ' selected="selected"' ?>><?=$s->name?></option>
-							<?php endforeach ?>
-						</select>
-					</td>
-					
-					<?php $components = $model->readComponentByLayout($p->layout) ?>
-					<td>
-						<select name='component[<?=$key?>]'>
-							<option value=''>Selecione...</option>
-							<?php foreach($components as $c): ?>
-							<option value='<?=$c->name?>'
-								<?php if (($r && !empty($_POST['component'][$r->id]) && $_POST['component'][$r->id] == $c->name)
-										  || ($r && empty($_POST['component'][$r->id]) && $r->component == $c->name)) echo ' selected="selected"' ?>><?=$c->name?></option>
-							<?php endforeach ?>
-						</select>
-					</td>
-					<td><input type=checkbox name='fixed[<?=$key?>]'<?php if ($r && $o->fixed && $o->fixed == $r->id) echo ' checked'?>></td>
-				</tr>
-				<?php endforeach ?>
-			</tbody>
-		</table>
-	</div>
-	
-	<div class='form-actions'>
-		<a href=# onclick='enviar_form(this.parentNode.parentNode, "save", event)'>Salvar</a>
-		<a href=# onclick='enviar_form(this.parentNode.parentNode, "savecontinue", event)'>Salvar e Continuar</a>
-	</div>
+                        foreach($l as $q)
+                        if ($p->id == $q->page) {
+                            $r = $q;
+                            $checked = ' checked';
+                            break;
+                        }
+                    ?>
+                    <td><input type=checkbox value='<?=$r->id?>' name='id[<?=$key?>]'<?=$checked?>></td>
+
+                    <input type=hidden name='page[<?=$key?>]' value='<?=$p->id?>'>
+                    <input type=hidden name='menu' value='<?=$o->id?>'>
+
+                    <td><?=$p->token ?></td>
+                    <td><?=$p->title ?></td>
+                    <td><input type=text name='order[<?=$key?>]' value='<?=$r ? $r->order : ''?>'></td>
+
+                    <?php $sections = $model->readSectionByLayout($p->layout) ?>
+                    <td>
+                        <select name='section[<?=$key?>]'>
+                            <option value=''>Selecione...</option>
+                            <?php foreach($sections as $s): ?>
+                            <option value='<?=$s->name?>'
+                                <?php if (($r && !empty($_POST['section'][$r->id]) && $_POST['section'][$r->id] == $s->name)
+                                          || ($r && empty($_POST['section'][$r->id]) && $r->section == $s->name)) echo ' selected="selected"' ?>><?=$s->name?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </td>
+
+                    <?php $components = $model->readComponentByLayout($p->layout) ?>
+                    <td>
+                        <select name='component[<?=$key?>]'>
+                            <option value=''>Selecione...</option>
+                            <?php foreach($components as $c): ?>
+                            <option value='<?=$c->name?>'
+                                <?php if (($r && !empty($_POST['component'][$r->id]) && $_POST['component'][$r->id] == $c->name)
+                                          || ($r && empty($_POST['component'][$r->id]) && $r->component == $c->name)) echo ' selected="selected"' ?>><?=$c->name?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </td>
+                    <td><input type=checkbox name='fixed[<?=$key?>]'<?php if ($r && $o->fixed && $o->fixed == $r->id) echo ' checked'?>></td>
+                </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class='form-actions'>
+        <a href=# onclick='enviar_form(this.parentNode.parentNode, "save", event)'>Salvar</a>
+        <a href=# onclick='enviar_form(this.parentNode.parentNode, "savecontinue", event)'>Salvar e Continuar</a>
+    </div>
 </form>

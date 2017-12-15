@@ -1,28 +1,55 @@
+<?php
+/**
+ * Squille (https://github.com/jairhumberto/Squille)
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 Jair Humberto
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+?>
 <h2>Conteúdos - Adicionar</h2>
 <form action='/admin/contents/save' method=post>
-	<?php $categories = $model->readCategories() ?>
-	<label for='i_category'>Categoria</label>
-	<select name='category' id='i_category'>
-		<option value=''>Selecione...</option>
-		<?php foreach($categories as $c): ?>
-			<option value='<?=$c->id?>'<?php if (isset($_POST['category']) && $_POST['category'] == $c->id) echo ' selected="selected"' ?>><?=$c->description?></option>
-		<?php endforeach ?>
-	</select><br>
-	
-	<label for='i_description'>Descrição</label>
-	<input type=text value='<?=isset($_POST['description']) ? $_POST['description'] : ''?>' placeholder='Digite aqui' name='description' id='i_description'><br>
-	
-	<label for='i_date'>Data</label>
-	<input type='datetime-local' size=16 value='<?=isset($_POST['date']) ? $_POST['date']: ''?>' name='date' id='i_date'><br>
-	
-	<label>Default Editor</label>
-	<div class='textarea'>
-		<textarea placeholder='Digite aqui' class='ckeditor' name='text' id='i_text'><?=isset($_POST['text']) ? $_POST['text'] : ''?></textarea>
-	</div>
-	
-	<div class='form-actions'>
-		<a href=# onclick='enviar_form(this.parentNode.parentNode, "save", event)'>Salvar</a>
-		<a href=# onclick='enviar_form(this.parentNode.parentNode, "savecontinue", event)'>Salvar e Continuar</a>
-		<a href='/admin/contents'>Cancelar</a>
-	</div>
+    <?php $categories = $model->readCategories() ?>
+    <label for='i_category'>Categoria</label>
+    <select name='category' id='i_category'>
+        <option value=''>Selecione...</option>
+        <?php foreach($categories as $c): ?>
+            <option value='<?=$c->id?>'<?php if (isset($_POST['category']) && $_POST['category'] == $c->id) echo ' selected="selected"' ?>><?=$c->description?></option>
+        <?php endforeach ?>
+    </select><br>
+
+    <label for='i_description'>Descrição</label>
+    <input type=text value='<?=isset($_POST['description']) ? $_POST['description'] : ''?>' placeholder='Digite aqui' name='description' id='i_description'><br>
+
+    <label for='i_date'>Data</label>
+    <input type='datetime-local' size=16 value='<?=isset($_POST['date']) ? $_POST['date']: ''?>' name='date' id='i_date'><br>
+
+    <label>Default Editor</label>
+    <div class='textarea'>
+        <textarea placeholder='Digite aqui' class='ckeditor' name='text' id='i_text'><?=isset($_POST['text']) ? $_POST['text'] : ''?></textarea>
+    </div>
+
+    <div class='form-actions'>
+        <a href=# onclick='enviar_form(this.parentNode.parentNode, "save", event)'>Salvar</a>
+        <a href=# onclick='enviar_form(this.parentNode.parentNode, "savecontinue", event)'>Salvar e Continuar</a>
+        <a href='/admin/contents'>Cancelar</a>
+    </div>
 </form>

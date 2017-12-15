@@ -1,11 +1,39 @@
 <?php
+/**
+ * Squille (https://github.com/jairhumberto/Squille)
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 Jair Humberto
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 namespace Admin\DAO\DB;
 
 use Squille\Core\Collection;
 use \PDO;
 
-class PagesDB extends DAODB {
-    public function read() {
+class PagesDB extends DAODB
+{
+    public function read()
+    {
         $stm = $this->connection->prepare('SELECT * FROM pages');
         $stm->execute();
 
@@ -17,7 +45,8 @@ class PagesDB extends DAODB {
         return $c;
     }
 
-    public function readById($id) {
+    public function readById($id)
+    {
         $stm = $this->connection->prepare('SELECT * FROM pages WHERE id = :id');
 
         $stm->bindParam(':id', $id, PDO::PARAM_INT);
@@ -26,12 +55,13 @@ class PagesDB extends DAODB {
         return $stm->fetchObject();
     }
 
-    public function create($e) {
+    public function create($e)
+    {
         $stm = $this->connection->prepare('
-				INSERT pages SET
-					id = :id,
+                INSERT pages SET
+                    id = :id,
                     token = :token,
-					layout = :layout,
+                    layout = :layout,
                     title = :title');
 
         $e->id = $this->getNextIndex();
@@ -43,15 +73,16 @@ class PagesDB extends DAODB {
         $stm->execute();
     }
 
-    public function update($e) {
+    public function update($e)
+    {
         $stm = $this->connection->prepare('
-				UPDATE pages SET
-					token = :token,
-					layout = :layout,
+                UPDATE pages SET
+                    token = :token,
+                    layout = :layout,
                     title = :title
-				WHERE
-					id = :id
-				');
+                WHERE
+                    id = :id
+                ');
 
         $stm->bindParam(':token', $e->token, PDO::PARAM_STR);
         $stm->bindParam(':layout', $e->layout, PDO::PARAM_STR);
@@ -61,13 +92,15 @@ class PagesDB extends DAODB {
         $stm->execute();
     }
 
-    public function deleteById($id) {
+    public function deleteById($id)
+    {
         $stm = $this->connection->prepare('DELETE FROM pages WHERE id = :id');
         $stm->bindParam(':id', $id, PDO::PARAM_INT);
         $stm->execute();
     }
 
-    public function getNextIndex() {
+    public function getNextIndex()
+    {
         $stm = $this->connection->prepare('SELECT MAX(id) max_id FROM pages');
         $stm->execute();
         $e = $stm->fetchObject();

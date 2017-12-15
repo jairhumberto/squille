@@ -1,10 +1,35 @@
+<!--
+ - Squille (https://github.com/jairhumberto/Squille)
+ -
+ - MIT License
+ -
+ - Copyright (c) 2017 Jair Humberto
+ -
+ - Permission is hereby granted, free of charge, to any person obtaining a copy
+ - of this software and associated documentation files (the "Software"), to deal
+ - in the Software without restriction, including without limitation the rights
+ - to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ - copies of the Software, and to permit persons to whom the Software is
+ - furnished to do so, subject to the following conditions:
+ -
+ - The above copyright notice and this permission notice shall be included in all
+ - copies or substantial portions of the Software.
+ -
+ - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ - IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ - FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ - AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ - SOFTWARE.
+ -->
 <?xml version='1.0' encoding='UTF-8'?>
 
-<xsl:transform 	version='1.0'
-				xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
-				xmlns:tpl='http://www.squille.com/2018/XSL/Template'>
+<xsl:transform     version='1.0'
+                xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+                xmlns:tpl='http://www.squille.com/2018/XSL/Template'>
     <xsl:template match='/'>
-    	<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+        <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
         <html lang='pt'>
             <head>
                 <meta charset='utf-8'/>
@@ -12,13 +37,13 @@
 
                 <link rel='stylesheet' href='http://assets-toknew.squille.com/css/style.css' type='text/css'/>
                 <link rel='stylesheet' href='http://assets-toknew.squille.com/scripts/camerajs/css/camera.css' type='text/css'/>
-				
-				<!-- fancybox -->
-				<link rel='stylesheet' href='http://assets-toknew.squille.com/scripts/fancybox/jquery.fancybox-1.3.4.css' type='text/css'/>
-				
-				<!-- adwords -->
-				<script async='async' src='https://www.googletagmanager.com/gtag/js?=AW-995362299'><xsl:comment/></script>
-				<script src='https://assets-toknew.squille.com/scripts/adwords.js'><xsl:comment/></script>
+
+                <!-- fancybox -->
+                <link rel='stylesheet' href='http://assets-toknew.squille.com/scripts/fancybox/jquery.fancybox-1.3.4.css' type='text/css'/>
+
+                <!-- adwords -->
+                <script async='async' src='https://www.googletagmanager.com/gtag/js?=AW-995362299'><xsl:comment/></script>
+                <script src='https://assets-toknew.squille.com/scripts/adwords.js'><xsl:comment/></script>
             </head>
             <body>
                 <div class='page'>
@@ -84,7 +109,7 @@
                             </div>
                         </form>
                     </div>
-                    
+
                     <footer class='container'>
                         <p>© Toknew 2017</p>
                         <p>Proudly powered by Squille</p>
@@ -94,18 +119,18 @@
 
             <script src='http://assets-toknew.squille.com/scripts/jquery.min.js'><xsl:comment/></script>
             <script src='http://assets-toknew.squille.com/scripts/camerajs/scripts/jquery.mobile.customized.min.js'><xsl:comment/></script>
-            <script src='http://assets-toknew.squille.com/scripts/camerajs/scripts/jquery.easing.1.3.js'><xsl:comment/></script> 
+            <script src='http://assets-toknew.squille.com/scripts/camerajs/scripts/jquery.easing.1.3.js'><xsl:comment/></script>
             <script src='http://assets-toknew.squille.com/scripts/camerajs/scripts/camera.min.js'><xsl:comment/></script>
             <script src='http://assets-toknew.squille.com/scripts/masked-input/masked.input.js'><xsl:comment/></script>
             <script src='http://assets-toknew.squille.com/scripts/jquery-bez/jquery.bez.js'><xsl:comment/></script>
             <script src='http://assets-toknew.squille.com/scripts/jquery-validate/jquery.validate.min.js'><xsl:comment/></script>
-			
-			<!-- fancybox -->
+
+            <!-- fancybox -->
             <script src='http://assets-toknew.squille.com/scripts/fancybox/jquery.fancybox-1.3.4.pack.js'><xsl:comment/></script>
             <script src='http://assets-toknew.squille.com/scripts/fancybox/jquery.easing-1.3.pack.js'><xsl:comment/></script>
             <script src='http://assets-toknew.squille.com/scripts/fancybox/jquery.mousewheel-3.0.4.pack.js'><xsl:comment/></script>
-			
-			<!-- main script -->
+
+            <!-- main script -->
             <script src='http://assets-toknew.squille.com/scripts/script.js'><xsl:comment/></script>
         </html>
     </xsl:template>

@@ -1,61 +1,88 @@
+<?php
+/**
+ * Squille (https://github.com/jairhumberto/Squille)
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 Jair Humberto
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+?>
 <?php $o = $model->readLinkById($id) ?>
 <h2>Links - Editar</h2>
 <form action='/admin/links/save' method=post>
-	<input type=hidden value='<?=$o->id?>' name='id'>
-	
-	<?php $menus = $model->readMenus() ?>
-	<label for='i_menu'>Menu</label>
-	<select name='menu' id='i_menu'>
-		<option value=''>Selecione...</option>
-		<?php foreach($menus as $m): ?>
-		<option value='<?=$m->id?>'
-			<?php if ((!empty($_POST['menu']) && $_POST['menu'] == $m->id)
-					  || (empty($_POST['menu']) && $o->menu == $m->id)) echo ' selected="selected"' ?>><?=$m->description?></option>
-		<?php endforeach ?>
-	</select><br>
-	
-	<label>Tipo</label>
-	<label>
-	<input type=radio name='tipo' value='interno'
-			<?php if((!empty($_POST['tipo']) && $_POST['tipo'] == 'interno')
-					|| (empty($_POST['tipo']) && $o->tipo == 'interno')) echo 'checked'?>
-					onclick='link_externo_interno("interno")'> Interno</label>
-	<label>
-	<input type=radio name='tipo' value='externo'
-			<?php if((!empty($_POST['tipo']) && $_POST['tipo'] == 'externo')
-					|| (empty($_POST['tipo']) && $o->tipo == 'externo')) echo 'checked'?>
-					onclick='link_externo_interno("externo")'> Externo</label><br>
+    <input type=hidden value='<?=$o->id?>' name='id'>
 
-	<?php $pages = $model->readPages() ?>
-	<label for='i_href_select'>Href</label>
-	<select name='href' id='i_href_select'>
-		<option value=''>Selecione...</option>
-		<?php foreach($pages as $p): ?>
-		<option value='<?=$p->token?>'
-			<?php if ((!empty($_POST['href']) && $_POST['href'] == $p->token) ||
-					  (empty($_POST['href']) && $o->href == $p->token)) echo ' selected="selected"' ?>><?=$p->title?></option>
-		<?php endforeach ?>
-	</select>
-	
-	<label for='i_href_input'>Href</label>
-	<input type=text value='<?=!empty($_POST['href']) ? $_POST['href'] : $o->href ?>' placeholder='Digite aqui' name='href' id='i_href_input'>
-	
-	<br>
+    <?php $menus = $model->readMenus() ?>
+    <label for='i_menu'>Menu</label>
+    <select name='menu' id='i_menu'>
+        <option value=''>Selecione...</option>
+        <?php foreach($menus as $m): ?>
+        <option value='<?=$m->id?>'
+            <?php if ((!empty($_POST['menu']) && $_POST['menu'] == $m->id)
+                      || (empty($_POST['menu']) && $o->menu == $m->id)) echo ' selected="selected"' ?>><?=$m->description?></option>
+        <?php endforeach ?>
+    </select><br>
 
-	<label for='i_text'>Texto</label>
-	<input type=text value='<?=!empty($_POST['text']) ? $_POST['text'] : $o->text ?>' placeholder='Digite aqui' name='text' id='i_text'><br>
-	
-	<div class='form-actions'>
-		<a href=# onclick='enviar_form(this.parentNode.parentNode, "save", event)'>Salvar</a>
-		<a href=# onclick='enviar_form(this.parentNode.parentNode, "savecontinue", event)'>Salvar e Continuar</a>
-		<a href='/admin/links'>Cancelar</a>
-	</div>
-	
-	<script type='text/javascript'>
-		<?php if((!empty($_POST) && $_POST['tipo'] == 'externo') || $o->tipo == 'externo'): ?>
-			link_externo_interno('externo')
-		<?php else: ?>
-			link_externo_interno('interno')
-		<?php endif ?>
-	</script>
+    <label>Tipo</label>
+    <label>
+    <input type=radio name='tipo' value='interno'
+            <?php if((!empty($_POST['tipo']) && $_POST['tipo'] == 'interno')
+                    || (empty($_POST['tipo']) && $o->tipo == 'interno')) echo 'checked'?>
+                    onclick='link_externo_interno("interno")'> Interno</label>
+    <label>
+    <input type=radio name='tipo' value='externo'
+            <?php if((!empty($_POST['tipo']) && $_POST['tipo'] == 'externo')
+                    || (empty($_POST['tipo']) && $o->tipo == 'externo')) echo 'checked'?>
+                    onclick='link_externo_interno("externo")'> Externo</label><br>
+
+    <?php $pages = $model->readPages() ?>
+    <label for='i_href_select'>Href</label>
+    <select name='href' id='i_href_select'>
+        <option value=''>Selecione...</option>
+        <?php foreach($pages as $p): ?>
+        <option value='<?=$p->token?>'
+            <?php if ((!empty($_POST['href']) && $_POST['href'] == $p->token) ||
+                      (empty($_POST['href']) && $o->href == $p->token)) echo ' selected="selected"' ?>><?=$p->title?></option>
+        <?php endforeach ?>
+    </select>
+
+    <label for='i_href_input'>Href</label>
+    <input type=text value='<?=!empty($_POST['href']) ? $_POST['href'] : $o->href ?>' placeholder='Digite aqui' name='href' id='i_href_input'>
+
+    <br>
+
+    <label for='i_text'>Texto</label>
+    <input type=text value='<?=!empty($_POST['text']) ? $_POST['text'] : $o->text ?>' placeholder='Digite aqui' name='text' id='i_text'><br>
+
+    <div class='form-actions'>
+        <a href=# onclick='enviar_form(this.parentNode.parentNode, "save", event)'>Salvar</a>
+        <a href=# onclick='enviar_form(this.parentNode.parentNode, "savecontinue", event)'>Salvar e Continuar</a>
+        <a href='/admin/links'>Cancelar</a>
+    </div>
+
+    <script type='text/javascript'>
+        <?php if((!empty($_POST) && $_POST['tipo'] == 'externo') || $o->tipo == 'externo'): ?>
+            link_externo_interno('externo')
+        <?php else: ?>
+            link_externo_interno('interno')
+        <?php endif ?>
+    </script>
 </form>
