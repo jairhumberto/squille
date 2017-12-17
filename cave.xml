@@ -97,7 +97,7 @@
         <table Name="pagescategories" Engine="InnoDB" Row_format="Compact" Charset="utf8" Collation="utf8_general_ci" Checksum="">
             <fields>
                 <field Field="id" Type="int(11)" Null="NO" Key="PRI" Default="" Extra="" Comment=""/>
-                <field Field="page" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
+                <field Field="page" Type="int(11)" Null="YES" Key="" Default="" Extra="" Comment=""/>
                 <field Field="category" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
                 <field Field="order" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
                 <field Field="layout" Type="varchar(255)" Charset="utf8" Collation="utf8_general_ci" Null="NO" Key="" Default="" Extra="" Comment=""/>
@@ -107,7 +107,7 @@
             <indexes>
                 <index Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Sub_part="" Packed="" Null="" Index_type="BTREE" Comment=""/>
                 <index Non_unique="1" Key_name="FK_CATEGORY_PAGE" Seq_in_index="1" Column_name="category" Collation="A" Sub_part="" Packed="" Null="" Index_type="BTREE" Comment=""/>
-                <index Non_unique="1" Key_name="FK_PAGE_CATEGORY" Seq_in_index="1" Column_name="page" Collation="A" Sub_part="" Packed="" Null="" Index_type="BTREE" Comment=""/>
+                <index Non_unique="1" Key_name="FK_PAGE_CATEGORY" Seq_in_index="1" Column_name="page" Collation="A" Sub_part="" Packed="" Null="YES" Index_type="BTREE" Comment=""/>
             </indexes>
             <fks>
                 <fk symbol="FK_CATEGORY_PAGE">
@@ -132,7 +132,7 @@
         <table Name="pagescontents" Engine="InnoDB" Row_format="Compact" Charset="utf8" Collation="utf8_general_ci" Checksum="">
             <fields>
                 <field Field="id" Type="int(11)" Null="NO" Key="PRI" Default="" Extra="" Comment=""/>
-                <field Field="page" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
+                <field Field="page" Type="int(11)" Null="YES" Key="" Default="" Extra="" Comment=""/>
                 <field Field="content" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
                 <field Field="order" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
                 <field Field="section" Type="varchar(255)" Charset="utf8" Collation="utf8_general_ci" Null="NO" Key="" Default="" Extra="" Comment=""/>
@@ -141,7 +141,7 @@
             <indexes>
                 <index Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Sub_part="" Packed="" Null="" Index_type="BTREE" Comment=""/>
                 <index Non_unique="1" Key_name="FK_CONTENT_PAGE" Seq_in_index="1" Column_name="content" Collation="A" Sub_part="" Packed="" Null="" Index_type="BTREE" Comment=""/>
-                <index Non_unique="1" Key_name="FK_PAGE_CONTENT" Seq_in_index="1" Column_name="page" Collation="A" Sub_part="" Packed="" Null="" Index_type="BTREE" Comment=""/>
+                <index Non_unique="1" Key_name="FK_PAGE_CONTENT" Seq_in_index="1" Column_name="page" Collation="A" Sub_part="" Packed="" Null="YES" Index_type="BTREE" Comment=""/>
             </indexes>
             <fks>
                 <fk symbol="FK_CONTENT_PAGE">
@@ -166,7 +166,7 @@
         <table Name="pagesmenus" Engine="InnoDB" Row_format="Compact" Charset="utf8" Collation="utf8_general_ci" Checksum="">
             <fields>
                 <field Field="id" Type="int(11)" Null="NO" Key="PRI" Default="" Extra="" Comment=""/>
-                <field Field="page" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
+                <field Field="page" Type="int(11)" Null="YES" Key="" Default="" Extra="" Comment=""/>
                 <field Field="menu" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
                 <field Field="order" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
                 <field Field="section" Type="varchar(255)" Charset="utf8" Collation="utf8_general_ci" Null="NO" Key="" Default="" Extra="" Comment=""/>
@@ -175,7 +175,7 @@
             <indexes>
                 <index Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Sub_part="" Packed="" Null="" Index_type="BTREE" Comment=""/>
                 <index Non_unique="1" Key_name="FK_MENU_PAGE" Seq_in_index="1" Column_name="menu" Collation="A" Sub_part="" Packed="" Null="" Index_type="BTREE" Comment=""/>
-                <index Non_unique="1" Key_name="FK_PAGE_MENU" Seq_in_index="1" Column_name="page" Collation="A" Sub_part="" Packed="" Null="" Index_type="BTREE" Comment=""/>
+                <index Non_unique="1" Key_name="FK_PAGE_MENU" Seq_in_index="1" Column_name="page" Collation="A" Sub_part="" Packed="" Null="YES" Index_type="BTREE" Comment=""/>
             </indexes>
             <fks>
                 <fk symbol="FK_MENU_PAGE">

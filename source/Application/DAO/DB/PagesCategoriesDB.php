@@ -39,7 +39,7 @@ class PagesCategoriesDB extends DAODB
             FROM pagescategories
             WHERE
                 page = :page
-                OR fixed = 1
+                OR page IS NULL
             ORDER BY `order`
             ');
 
