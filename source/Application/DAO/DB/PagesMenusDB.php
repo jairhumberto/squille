@@ -39,7 +39,7 @@ class PagesMenusDB extends DAODB
             FROM pagesmenus
             WHERE
                 page = :page
-                OR fixed = 1
+                OR page IS NULL
             ORDER BY `order`
             ');
 

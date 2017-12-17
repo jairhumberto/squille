@@ -42,7 +42,7 @@ class PagesContentsDB extends DAODB
                     ON contents.id = pagescontents.content
             WHERE
                 page = :page
-                OR fixed = 1
+                OR page IS NULL
             ORDER BY pagescontents.`order`, contents.`date` DESC
             ');
 
