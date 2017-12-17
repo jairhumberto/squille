@@ -35,13 +35,13 @@ class PagesCategoriesDB extends DAODB
     public function readByPage($page)
     {
         $stm = $this->connection->prepare('
-            SELECT pagescategories.* FROM pagescategories
-
-            LEFT OUTER JOIN categories
-                         ON categories.id = pagescategories.category
-                            AND categories.fixed = pagescategories.id
-
-            WHERE page = :page OR pagescategories.id = `fixed` ORDER BY `order`');
+            SELECT *
+            FROM pagescategories
+            WHERE
+                page = :page
+                OR fixed = 1
+            ORDER BY `order`
+            ');
 
         $stm->bindParam(':page', $page, PDO::PARAM_INT);
         $stm->execute();

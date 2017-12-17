@@ -35,16 +35,16 @@ class PagesContentsDB extends DAODB
     public function readByPage($page)
     {
         $stm = $this->connection->prepare('
-                SELECT pagescontents.* FROM pagescontents
-
+            SELECT
+                pagescontents.*
+            FROM pagescontents
                 INNER JOIN contents
-                        ON contents.id = pagescontents.content
-
-                LEFT OUTER JOIN contents f
-                             ON f.id = pagescontents.content
-                                AND f.fixed = pagescontents.id
-
-                WHERE page = :page OR pagescontents.id = f.`fixed` ORDER BY pagescontents.`order`, contents.`date` DESC');
+                    ON contents.id = pagescontents.content
+            WHERE
+                page = :page
+                OR fixed = 1
+            ORDER BY pagescontents.`order`, contents.`date` DESC
+            ');
 
         $stm->bindParam(':page', $page, PDO::PARAM_INT);
         $stm->execute();

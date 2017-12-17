@@ -36,13 +36,13 @@
         </xsl:copy>
     </xsl:template>
 
-    <!-- componentes gerais -->
+    <!-- General components. -->
     <xsl:template match="content[@component='as-is']" tpl:content="as-is">
         <xsl:copy-of select='text/node()'/>
     </xsl:template>
-    <!-- componentes gerais -->
+    <!-- General components. -->
 
-    <!-- componentes de categorias -->
+    <!-- Category components. -->
     <xsl:template match="category[@component='categoria-example']" tpl:category="categoria-example">
         <section class='category'>
             <h2><a name='{@description}'><xsl:comment/></a><xsl:value-of select='@description'/></h2>
@@ -53,9 +53,9 @@
             </div>
         </section>
     </xsl:template>
-    <!-- componentes de categorias -->
+    <!-- Category components. -->
 
-    <!-- menus -->
+    <!-- Menu components. -->
     <xsl:template match="menu[@component='horizontal-dotted']" tpl:menu="horizontal-dotted">
         <ul class='dot-separated'>
             <xsl:for-each select='link'>
@@ -63,5 +63,5 @@
             </xsl:for-each>
         </ul>
     </xsl:template>
-    <!-- menus -->
+    <!-- Menu components. -->
 </xsl:transform>
