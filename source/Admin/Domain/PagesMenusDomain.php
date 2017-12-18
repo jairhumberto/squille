@@ -54,11 +54,7 @@ class PagesMenusDomain
 
         $daomenus = new MenusDomain;
         $menu = $daomenus->readById($e->menu);
-        if ($e->fixed) {
-            $menu->fixed = $e->id;
-        } else {
-            $menu->fixed = null;
-        }
+
         $daomenus->save($menu);
 
         return $e;

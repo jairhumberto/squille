@@ -47,7 +47,6 @@ class PagesCategoriesController extends SessionController
                 $e->section = $args->get('section')[$key];
                 $e->component = $args->get('component')[$key];
                 $e->limit = $args->get('limit')[$key];
-                $e->fixed = $args->get('fixed')[$key];
 
                 $e = $model->save($e);
             }

@@ -54,11 +54,7 @@ class PagesCategoriesDomain
 
         $daocategories = new CategoriesDomain;
         $category = $daocategories->readById($e->category);
-        if ($e->fixed) {
-            $category->fixed = $e->id;
-        } else {
-            $category->fixed = null;
-        }
+
         $daocategories->save($category);
 
         return $e;

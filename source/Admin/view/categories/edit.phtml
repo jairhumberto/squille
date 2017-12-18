@@ -52,7 +52,6 @@
                     <th>Seção</th>
                     <th>Tipo</th>
                     <th>Limite</th>
-                    <th>Fixo</th>
                 </tr>
             </thead>
             <tbody>
@@ -104,9 +103,7 @@
                             <?php endforeach ?>
                         </select>
                     </td>
-
                     <td><input type=number name='limit[<?=$key?>]' value='<?=$r->limit?>'></td>
-                    <td><input type=checkbox name='fixed[<?=$key?>]'<?php if ($o->fixed && $o->fixed == $r->id) echo ' checked'?>></td>
                 </tr>
                 <?php endforeach ?>
             </tbody>

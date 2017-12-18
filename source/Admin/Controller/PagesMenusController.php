@@ -46,7 +46,6 @@ class PagesMenusController extends SessionController
                 $e->order = $args->get('order')[$key];
                 $e->section = $args->get('section')[$key];
                 $e->component = $args->get('component')[$key];
-                $e->fixed = $args->get('fixed')[$key];
 
                 $e = $model->save($e);
             }

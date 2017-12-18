@@ -54,11 +54,7 @@ class PagesContentsDomain
 
         $daocontents = new ContentsDomain;
         $content = $daocontents->readById($e->content);
-        if ($e->fixed) {
-            $content->fixed = $e->id;
-        } else {
-            $content->fixed = null;
-        }
+
         $daocontents->save($content);
 
         return $e;

@@ -57,30 +57,20 @@ class MenusDB extends DAODB
 
     public function create($e)
     {
-        $stm = $this->connection->prepare('
-                INSERT menus SET
-                    id = :id,
-                    description = :description,
-                    fixed = :fixed');
+        $stm = $this->connection->prepare('INSERT menus SET id = :id, description = :description');
 
         $e->id = $this->getNextIndex();
         $stm->bindParam(':id', $e->id, PDO::PARAM_INT);
         $stm->bindParam(':description', $e->description, PDO::PARAM_STR);
-        $stm->bindParam(':fixed', $e->fixed, PDO::PARAM_INT);
 
         $stm->execute();
     }
 
     public function update($e)
     {
-        $stm = $this->connection->prepare('
-                UPDATE menus SET
-                    description = :description,
-                    fixed = :fixed
-                WHERE id = :id');
+        $stm = $this->connection->prepare('UPDATE menus SET description = :description WHERE id = :id');
 
         $stm->bindParam(':description', $e->description, PDO::PARAM_STR);
-        $stm->bindParam(':fixed', $e->fixed, PDO::PARAM_INT);
         $stm->bindParam(':id', $e->id, PDO::PARAM_INT);
 
         $stm->execute();

@@ -57,20 +57,13 @@ class ContentsDB extends DAODB
 
     public function create($e)
     {
-        $stm = $this->connection->prepare('
-                INSERT contents SET
-                    id = :id,
-                    description = :description,
-                    `date` = :date,
-                    text = :text,
-                    fixed = :fixed');
+        $stm = $this->connection->prepare('INSERT contents SET id = :id, description = :description, `date` = :date, text = :text');
 
         $e->id = $this->getNextIndex();
         $stm->bindParam(':id', $e->id, PDO::PARAM_INT);
         $stm->bindParam(':description', $e->description, PDO::PARAM_STR);
         $stm->bindParam(':date', $e->date, PDO::PARAM_STR);
         $stm->bindParam(':text', $e->text, PDO::PARAM_STR);
-        $stm->bindParam(':fixed', $e->fixed, PDO::PARAM_INT);
 
         $stm->execute();
 
@@ -90,20 +83,11 @@ class ContentsDB extends DAODB
 
     public function update($e)
     {
-        $stm = $this->connection->prepare('
-                UPDATE contents SET
-                    description = :description,
-                    date = :date,
-                    text = :text,
-                    fixed = :fixed
-                WHERE
-                    id = :id
-                ');
+        $stm = $this->connection->prepare('UPDATE contents SET description = :description, date = :date, text = :text WHERE id = :id');
 
         $stm->bindParam(':description', $e->description, PDO::PARAM_STR);
         $stm->bindParam(':date', $e->date, PDO::PARAM_STR);
         $stm->bindParam(':text', $e->text, PDO::PARAM_STR);
-        $stm->bindParam(':fixed', $e->fixed, PDO::PARAM_INT);
         $stm->bindParam(':id', $e->id, PDO::PARAM_INT);
 
         $stm->execute();

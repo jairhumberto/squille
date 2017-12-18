@@ -36,11 +36,11 @@
         </xsl:copy>
     </xsl:template>
 
-    <!-- General components. -->
+    <!-- Content components. -->
     <xsl:template match="content[@component='as-is']" tpl:content="as-is">
         <xsl:copy-of select='text/node()'/>
     </xsl:template>
-    <!-- General components. -->
+    <!-- Content components. -->
 
     <!-- Category components. -->
     <xsl:template match="category[@component='categoria-example']" tpl:category="categoria-example">
