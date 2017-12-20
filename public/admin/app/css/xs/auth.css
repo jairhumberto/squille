@@ -1,0 +1,46 @@
+body {
+	background: black;
+}
+
+header {
+	color: white;
+	text-align: center;
+}
+
+.auth {
+	background: white;
+	padding: 20px;
+}
+
+header, .auth {
+	width: 320px;
+	margin: 70px auto;
+}
+
+form > input {
+	border: none;
+	height: 45px;
+	background: #666;
+	padding: 10px;
+	color: white;
+	border-radius: 5px;
+}
+
+input:first-of-type {
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	margin-bottom: 1px;
+}
+
+input:last-of-type {
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+}
+
+label {
+	line-height: 45px;
+}
+
+label:after {
+	content: ':'
+}

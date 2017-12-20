@@ -1,0 +1,163 @@
+#menu-principal {
+    background: #333;
+    width: 320px;
+    height: 100%;
+    z-index: 2;
+    left: -320px;
+    transition: 400ms;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#menu-principal h1 {
+    padding: 40px 20px 10px;
+    height: 142px;
+    font-size: 15px;
+    background-image: url(/admin/global/img/menu-background.png);
+    background-size: 320px 142px;
+}
+
+#menu-principal h1 img {
+    width: 60px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    display: block;
+    border: 0.5px solid #F1E6CA;
+}
+
+#menu-principal nav ul li a {
+    display: block;
+    line-height: 40px;
+    color: white;
+    text-decoration: none;
+    padding: 0 20px;
+    background: #444;
+    border-bottom: 1px solid #888
+}
+
+#menu-principal a:focus, #menu-principal a:hover, #menu-principal a:active {
+    background: white;
+    color: black;
+    border-right: 5px solid #444;
+    outline: none
+}
+
+.barra-topo {
+    height: 40px;
+}
+
+.barra-topo a#expandir {
+    background-image: url(/admin/global/img/botao-expandir.png);
+}
+
+.barra-topo h1 {
+    margin-left: -20px;
+    left: 50%;
+}
+
+.barra-topo h1 a {
+    background-image: url(/admin/global/img/logo.png);
+}
+
+.barra-topo a.sair {
+    background-image: url(/admin/global/img/botao-sair.png);
+    right: 0;
+}
+
+.barra-topo a:focus, .barra-topo a:hover {
+    filter: invert(100%);
+    outline: none
+}
+
+.barra-topo, .barra-topo a#expandir, .barra-topo h1 a, .barra-topo a.sair {
+    background-color: black
+}
+
+.barra-topo a#expandir, .barra-topo h1 a, .barra-topo a.sair {
+    background-size: 40px 40px;
+    overflow: hidden;
+    padding-left: 40px;
+}
+
+.barra-topo a#expandir, .barra-topo h1, .barra-topo h1 a, .barra-topo a.sair {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.barra-topo a#expandir, #menu-principal, .barra-topo h1, .barra-topo a.sair {
+    position: absolute;
+    top: 0;
+}
+
+.content {
+    margin: auto;
+    max-width: 1000px;
+    padding: 0 10px 10px 10px;
+    width: 100%;
+}
+
+.content h2 {
+    margin-bottom: 20px;
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+.grid {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    border-collapsing: separate;
+    border-spacing: 0;
+    min-width: 100%;
+}
+
+td, th {
+    padding: 10px;
+    white-space: nowrap;
+}
+
+tr :first-child, tr :nth-child(1), tr :nth-child(2) {
+    text-align: center;
+}
+
+tr:nth-child(even) td {
+    background: #EEE;
+}
+
+tr:nth-child(odd) td{
+    background: #F5F5F5;
+}
+
+th {
+    background: black;
+    text-align: left;
+    color: white;
+    font-weight: normal;
+}
+
+.textarea {
+    display: inline-block;
+}
+
+form .form-body {
+    overflow: auto;
+}
+
+textarea {
+    min-height: 100px;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+    appearance:textfield;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}

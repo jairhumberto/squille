@@ -1,0 +1,2 @@
+girado 20 graus
+e reduzido na proporção para 320 pixels de largura dentro de uma área de 490 pixels quadrados

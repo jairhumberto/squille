@@ -40,78 +40,37 @@
 </form>
 
 <h2>Páginas</h2>
+
+<?php $c = $model->readPagesByCategory($o->id) ?>
 <form action='/admin/pages-categories/bind' method=post>
     <div class='form-body'>
         <table>
             <thead>
                 <tr>
-                    <th width='2%'><input type=checkbox onchange='check_all(this)'></th>
-                    <th>Endereço</th>
-                    <th>Título</th>
-                    <th>Ordem</th>
+                    <th>Página</th>
                     <th>Seção</th>
-                    <th>Tipo</th>
+                    <th>Ordem</th>
+                    <th>Componente</th>
                     <th>Limite</th>
                 </tr>
             </thead>
             <tbody>
-                <?php $c = $model->readPages() ?>
-                <?php $l = $model->readPagesByCategory($o->id) ?>
-
-                <?php foreach($c as $key => $p): ?>
+                <?php foreach($c as $pc): ?>
                 <tr>
-                    <?php
-                        $checked = ' ';
-                        $r = null;
-
-                        foreach($l as $q)
-                        if ($p->id == $q->page) {
-                            $r = $q;
-                            $checked = ' checked';
-                            break;
-                        }
-                    ?>
-                    <td><input type=checkbox value='<?=$r->id?>' name='id[<?=$key?>]'<?=$checked?>></td>
-
-                    <input type=hidden name='page[<?=$key?>]' value='<?=$p->id?>'>
-                    <input type=hidden name='category' value='<?=$o->id?>'>
-
-                    <td><?=$p->token ?></td>
-                    <td><?=$p->title ?></td>
-                    <td><input type=number name='order[<?=$key?>]' value='<?=$r->order?>'></td>
-
-                    <?php $sections = $model->readSectionByLayout($p->layout) ?>
-                    <td>
-                        <select name='section[<?=$key?>]'>
-                            <option value=''>Selecione...</option>
-                            <?php foreach($sections as $s): ?>
-                            <option value='<?=$s->name?>'
-                                <?php if ((!empty($_POST['section'][$r->id]) && $_POST['section'][$r->id] == $s->name)
-                                          || (empty($_POST['section'][$r->id]) && $r->section == $s->name)) echo ' selected="selected"' ?>><?=$s->name?></option>
-                            <?php endforeach ?>
-                        </select>
-                    </td>
-
-                    <?php $components = $model->readCategoriesByLayout($p->layout) ?>
-                    <td>
-                        <select name='component[<?=$key?>]'>
-                            <option value=''>Selecione...</option>
-                            <?php foreach($components as $c): ?>
-                            <option value='<?=$c->name?>'
-                                <?php if ((!empty($_POST['component'][$r->id]) && $_POST['component'][$r->id] == $c->name)
-                                          || (empty($_POST['component'][$r->id]) && $r->component == $c->name)) echo ' selected="selected"' ?>><?=$c->name?></option>
-                            <?php endforeach ?>
-                        </select>
-                    </td>
-                    <td><input type=number name='limit[<?=$key?>]' value='<?=$r->limit?>'></td>
+                    <td><select></select></td>
+                    <td><select></select></td>
+                    <td><input></td>
+                    <td><select></select></td>
+                    <td><input></td>
                 </tr>
                 <?php endforeach ?>
             </tbody>
         </table>
-    </div>
 
-    <div class='form-actions'>
-        <a href=# onclick='enviar_form(this.parentNode.parentNode, "save", event)'>Salvar</a>
-        <a href=# onclick='enviar_form(this.parentNode.parentNode, "savecontinue", event)'>Salvar e Continuar</a>
+        <br>
+
+        <div class='form-actions'>
+            <a href='#'>Adicionar</a>
+        </div>
     </div>
 </form>

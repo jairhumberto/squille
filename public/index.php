@@ -30,6 +30,8 @@ session_start();
 use Squille\Core\System;
 use Squille\Core\Collection;
 
+error_reporting(E_ALL - E_NOTICE);
+
 ini_set('max_execution_time', 0);
 
 require '..'

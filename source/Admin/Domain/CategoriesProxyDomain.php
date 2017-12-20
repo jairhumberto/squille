@@ -24,7 +24,6 @@ class CategoriesProxyDomain {
 
     public function readSectionByLayout($layout) {
         $model = new XSLSectionsDomain;
-		
         return $model->readByLayout($layout);
     }
 

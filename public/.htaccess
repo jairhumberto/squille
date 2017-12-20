@@ -2,8 +2,7 @@ RewriteEngine On
 
 #
 # Files that will not be parsed by the Squille: You can include here more
-# extentions beside ico and xsl, but you should not remove the file-manager.php
-# rule.
+# extentions, but you should not remove the file-manager.php rule.
 #
 # Its recomend to use a cdn for assets files, instead of place them into the same
 # project.
