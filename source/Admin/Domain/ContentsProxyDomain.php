@@ -6,7 +6,7 @@ class ContentsProxyDomain {
         $model = new CategoriesDomain;
         return $model->readById($id);
     }
-	
+
     public function readCategories() {
         $model = new CategoriesDomain;
         return $model->read();
@@ -31,7 +31,7 @@ class ContentsProxyDomain {
         $model = new PagesDomain;
         return $model->readById($id);
     }
-	
+
     public function readPages() {
         $model = new PagesDomain;
         return $model->read();

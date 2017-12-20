@@ -43,6 +43,12 @@ class PagesMenusDomain
         $dao->deleteByMenu($menu);
     }
 
+    public function deleteById($id)
+    {
+        $dao = new PagesMenusDB;
+        $dao->deleteById($id);
+    }
+
     public function save($e)
     {
         $dao = new PagesMenusDB;
@@ -52,10 +58,10 @@ class PagesMenusDomain
             $dao->create($e);
         }
 
-        $daomenus = new MenusDomain;
-        $menu = $daomenus->readById($e->menu);
+        // $daomenus = new MenusDomain;
+        // $menu = $daomenus->readById($e->menu);
 
-        $daomenus->save($menu);
+        // $daomenus->save($menu);
 
         return $e;
     }

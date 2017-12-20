@@ -46,6 +46,18 @@ class PagesController extends SessionController
         $view->display();
     }
 
+    public function xmlAction()
+    {
+        $view = $this->getViewFactory()->create('index/layout.pxml');
+
+        $contentView = $this->getViewFactory()->create('pages/index.pxml');
+        $contentView->addVariable('model', new PagesProxyDomain);
+        $view->addVariable('content', $contentView);
+
+        header('Content-type: text/xml');
+        $view->display();
+    }
+
     public function addAction()
     {
         $view = $this->getViewFactory()->create('index/layout.phtml');

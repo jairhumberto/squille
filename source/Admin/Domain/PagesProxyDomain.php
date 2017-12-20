@@ -29,6 +29,12 @@ namespace Admin\Domain;
 
 class PagesProxyDomain
 {
+    public function readPages()
+    {
+        $model = new PagesDomain;
+        return $model->read();
+    }
+    
     public function readPageById($id)
     {
         $model = new PagesDomain;
@@ -39,5 +45,25 @@ class PagesProxyDomain
     {
         $model = new XSLLayoutsDomain;
         return $model->read();
+    }
+
+    public function readSectionByLayout($layout) {
+        $model = new XSLSectionsDomain;
+        return $model->readByLayout($layout);
+    }
+
+    public function readContentsComponentByLayout($layout) {
+        $model = new XSLComponentsDomain;
+        return $model->readContentsByLayout($layout);
+    }
+
+    public function readCategoriesComponentByLayout($layout) {
+        $model = new XSLComponentsDomain;
+        return $model->readCategoriesByLayout($layout);
+    }
+
+    public function readMenusComponentByLayout($layout) {
+        $model = new XSLComponentsDomain;
+        return $model->readMenusByLayout($layout);
     }
 }

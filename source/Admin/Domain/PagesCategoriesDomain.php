@@ -43,6 +43,12 @@ class PagesCategoriesDomain
         $dao->deleteByCategory($category);
     }
 
+    public function deleteById($id)
+    {
+        $dao = new PagesCategoriesDB;
+        $dao->deleteById($id);
+    }
+
     public function save($e)
     {
         $dao = new PagesCategoriesDB;
@@ -52,10 +58,10 @@ class PagesCategoriesDomain
             $dao->create($e);
         }
 
-        $daocategories = new CategoriesDomain;
-        $category = $daocategories->readById($e->category);
+        // $daocategories = new CategoriesDomain;
+        // $category = $daocategories->readById($e->category);
 
-        $daocategories->save($category);
+        // $daocategories->save($category);
 
         return $e;
     }

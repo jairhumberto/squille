@@ -40,76 +40,81 @@
 </form>
 
 <h2>Páginas</h2>
-<form action='/admin/pages-menus/bind' method=post>
+<?php $pc = $model->readPagesByMenu($o->id) ?>
+<form action='/admin/pages-menus' method=post>
     <div class='form-body'>
         <table>
             <thead>
                 <tr>
-                    <th width='2%'><input type=checkbox onchange='check_all(this)'></th>
-                    <th>Endereço</th>
-                    <th>Título</th>
-                    <th>Ordem</th>
+                    <th>#</th>
+                    <th>Página</th>
                     <th>Seção</th>
-                    <th>Tipo</th>
+                    <th>Ordem</th>
+                    <th>Componente</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
-            <tbody>
-                <?php $c = $model->readPages() ?>
-                <?php $l = $model->readPagesByMenu($o->id) ?>
-
-                <?php foreach($c as $key => $p): ?>
+            <tbody id='tbody'>
+                <?php foreach($pc as $page): ?>
                 <tr>
-                    <?php
-                        $checked = ' ';
-                        $r = null;
-
-                        foreach($l as $q)
-                        if ($p->id == $q->page) {
-                            $r = $q;
-                            $checked = ' checked';
-                            break;
-                        }
-                    ?>
-                    <td><input type=checkbox value='<?=$r->id?>' name='id[<?=$key?>]'<?=$checked?>></td>
-
-                    <input type=hidden name='page[<?=$key?>]' value='<?=$p->id?>'>
-                    <input type=hidden name='menu' value='<?=$o->id?>'>
-
-                    <td><?=$p->token ?></td>
-                    <td><?=$p->title ?></td>
-                    <td><input type=text name='order[<?=$key?>]' value='<?=$r ? $r->order : ''?>'></td>
-
-                    <?php $sections = $model->readSectionByLayout($p->layout) ?>
+                    <td><?=$page->id?></td>
+                    <td><?=$page->page ? $model->readPageById($page->page)->title : 'Todas'?></td>
+                    <td><?=$page->section?></td>
+                    <td><?=$page->order?></td>
+                    <td><?=$page->component?></td>
                     <td>
-                        <select name='section[<?=$key?>]'>
-                            <option value=''>Selecione...</option>
-                            <?php foreach($sections as $s): ?>
-                            <option value='<?=$s->name?>'
-                                <?php if (($r && !empty($_POST['section'][$r->id]) && $_POST['section'][$r->id] == $s->name)
-                                          || ($r && empty($_POST['section'][$r->id]) && $r->section == $s->name)) echo ' selected="selected"' ?>><?=$s->name?></option>
-                            <?php endforeach ?>
-                        </select>
-                    </td>
-
-                    <?php $components = $model->readComponentByLayout($p->layout) ?>
-                    <td>
-                        <select name='component[<?=$key?>]'>
-                            <option value=''>Selecione...</option>
-                            <?php foreach($components as $c): ?>
-                            <option value='<?=$c->name?>'
-                                <?php if (($r && !empty($_POST['component'][$r->id]) && $_POST['component'][$r->id] == $c->name)
-                                          || ($r && empty($_POST['component'][$r->id]) && $r->component == $c->name)) echo ' selected="selected"' ?>><?=$c->name?></option>
-                            <?php endforeach ?>
-                        </select>
+                        <a href='#' onclick='remove_page(this.parentNode.parentNode, "/admin/pages-menus/unbind/<?=$page->id?>", event)'>Excluir</a>
                     </td>
                 </tr>
                 <?php endforeach ?>
             </tbody>
         </table>
-    </div>
 
-    <div class='form-actions'>
-        <a href=# onclick='enviar_form(this.parentNode.parentNode, "save", event)'>Salvar</a>
-        <a href=# onclick='enviar_form(this.parentNode.parentNode, "savecontinue", event)'>Salvar e Continuar</a>
+        <br>
+
+        <div class='form-actions'>
+            <a href='#' onclick='add_row(document.getElementById("tbody"), event)'>Adicionar</a>
+        </div>
     </div>
 </form>
+
+<!-- Table row. -->
+<template id='page'>
+    <tr>
+        <td>#</td>
+        
+        <td>
+            <input type='hidden' name='menu' value='<?=$o->id?>'/>
+            <input type='checkbox' name='todas' value='1' title='todas'/>
+            <select name='page' onchange='fill_section_component(this, "menus")'>
+                <option value=''>Selecione...</option>
+                <?php $pages = $model->readPages() ?>
+                <?php foreach($pages as $page): ?>
+                    <option value='<?=$page->id?>'><?=$page->title?></option>
+                <?php endforeach ?>
+            </select>
+        </td>
+        
+        <td class='section'>
+            <select name='section' disabled>
+                <option value=''>Selecione...</option>
+            </select>
+        </td>
+        
+        <td>
+            <input name='order'/>
+        </td>
+        
+        <td class='component'>
+            <select name='component' disabled>
+                <option value=''>Selecione...</option>
+            </select>
+        </td>
+        
+        <td>
+            <a href='#' onclick='save_page(this.parentNode.parentNode, "menus", event)'>Salvar</a>
+            <a href='#' onclick='remove_row(this.parentNode.parentNode, event)'>Excluir</a>
+        </td>
+    </tr>
+</template>
+<!-- Table row. -->

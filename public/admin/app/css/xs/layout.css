@@ -12,7 +12,7 @@
     padding: 40px 20px 10px;
     height: 142px;
     font-size: 15px;
-    background-image: url(/admin/global/img/menu-background.png);
+    background-image: url(/admin/app/img/menu-background.png);
     background-size: 320px 142px;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .barra-topo a#expandir {
-    background-image: url(/admin/global/img/botao-expandir.png);
+    background-image: url(/admin/app/img/botao-expandir.png);
 }
 
 .barra-topo h1 {
@@ -55,11 +55,11 @@
 }
 
 .barra-topo h1 a {
-    background-image: url(/admin/global/img/logo.png);
+    background-image: url(/admin/app/img/logo.png);
 }
 
 .barra-topo a.sair {
-    background-image: url(/admin/global/img/botao-sair.png);
+    background-image: url(/admin/app/img/botao-sair.png);
     right: 0;
 }
 

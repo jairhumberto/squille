@@ -34,7 +34,7 @@ class PagesCategoriesDB extends DAODB
 {
     public function readByCategory($category)
     {
-        $stm = $this->connection->prepare('SELECT * FROM pagescategories WHERE category = :category ORDER BY `order`');
+        $stm = $this->connection->prepare('SELECT * FROM pagescategories WHERE category = :category');
 
         $stm->bindParam(':category', $category, PDO::PARAM_INT);
         $stm->execute();
@@ -54,8 +54,8 @@ class PagesCategoriesDB extends DAODB
                     id = :id,
                     page = :page,
                     category = :category,
-                    `order` = :order,
                     section = :section,
+                    `order` = :order,
                     component = :component,
                     `limit` = :limit');
 
@@ -63,8 +63,8 @@ class PagesCategoriesDB extends DAODB
         $stm->bindParam(':id', $e->id, PDO::PARAM_INT);
         $stm->bindParam(':page', $e->page, PDO::PARAM_INT);
         $stm->bindParam(':category', $e->category, PDO::PARAM_INT);
-        $stm->bindParam(':order', $e->order, PDO::PARAM_INT);
         $stm->bindParam(':section', $e->section, PDO::PARAM_STR);
+        $stm->bindParam(':order', $e->order, PDO::PARAM_INT);
         $stm->bindParam(':component', $e->component, PDO::PARAM_STR);
         $stm->bindParam(':limit', $e->limit, PDO::PARAM_INT);
 
@@ -77,8 +77,8 @@ class PagesCategoriesDB extends DAODB
                 UPDATE pagescategories SET
                     page = :page,
                     category = :category,
-                    `order` = :order,
                     section = :section,
+                    `order` = :order,
                     component = :component,
                     `limit` = :limit
                 WHERE
@@ -87,8 +87,8 @@ class PagesCategoriesDB extends DAODB
 
         $stm->bindParam(':page', $e->page, PDO::PARAM_INT);
         $stm->bindParam(':category', $e->category, PDO::PARAM_INT);
-        $stm->bindParam(':order', $e->order, PDO::PARAM_INT);
         $stm->bindParam(':section', $e->section, PDO::PARAM_STR);
+        $stm->bindParam(':order', $e->order, PDO::PARAM_INT);
         $stm->bindParam(':component', $e->component, PDO::PARAM_STR);
         $stm->bindParam(':limit', $e->limit, PDO::PARAM_INT);
         $stm->bindParam(':id', $e->id, PDO::PARAM_INT);
@@ -100,6 +100,13 @@ class PagesCategoriesDB extends DAODB
     {
         $stm = $this->connection->prepare('DELETE FROM pagescategories WHERE category = :category');
         $stm->bindParam(':category', $category, PDO::PARAM_INT);
+        $stm->execute();
+    }
+
+    public function deleteById($id)
+    {
+        $stm = $this->connection->prepare('DELETE FROM pagescategories WHERE id = :id');
+        $stm->bindParam(':id', $id, PDO::PARAM_INT);
         $stm->execute();
     }
 

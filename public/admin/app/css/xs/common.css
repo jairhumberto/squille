@@ -1,82 +1,96 @@
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	list-style: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 body {
-	font: 13px 'Noticia Text', serif;
+    font: 13px 'Noticia Text', serif;
 }
 
 .form-actions a {
-	display: inline-block;
-	min-width: 100px;
-	padding: 10px;
-	margin-bottom: 10px;
-	background: black;
-	color: white;
-	text-decoration: none;
-	text-align: center;
+    display: inline-block;
+    min-width: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: black;
+    color: white;
+    text-decoration: none;
+    text-align: center;
 }
 
 .form-actions a:hover {
-	background: white;
-	color: #167AC6
+    background: white;
+    color: #167AC6
 }
 
 form {
-	font-size: 0;
+    font-size: 0;
 }
 
 form > * {
-	font-size: 13px;
+    font-size: 13px;
 }
 
 label {
-	display: inline-block;
-	line-height: 35px;
-	padding-right: 10px;
-	width: 100px;
+    display: inline-block;
+    line-height: 35px;
+    padding-right: 10px;
+    width: 100px;
 }
 
-form .form-actions {
-	padding-left: 100px;
+form > .form-actions {
+    padding-left: 100px;
 }
 
 form .form-actions a {
-	margin-bottom: 4px;
+    margin-bottom: 4px;
 }
 
 form .form-body + .form-actions {
-	padding-left: 0;
-	margin-top: 5px;
+    padding-left: 0;
+    margin-top: 5px;
 }
 
 form input, form label, .textarea {
-	vertical-align: top;
+    vertical-align: top;
 }
 
 label input {
-	vertical-align: middle;
+    vertical-align: middle;
 }
 
 form > input, .textarea {
-	width: calc(100% - 100px);
+    width: calc(100% - 100px);
 }
 
 form input, form select, .textarea {
-	margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 form input, form select {
-	border: 1px solid silver;
-	padding: 0 10px;
-	height: 35px;
+    border: 1px solid silver;
+    padding: 0 10px;
+    height: 35px;
 }
 
 form input[type=checkbox], form input[type=radio] {
-	width: unset;
-	border: none;
-	height: unset;
+    width: unset;
+    border: none;
+    height: unset;
+}
+
+form table select
+{
+    width: 185px;
+}
+
+form table input
+{
+    width: 50px;
+}
+
+form table input, form table select {
+    vertical-align: middle;
 }

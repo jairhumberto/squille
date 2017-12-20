@@ -28,6 +28,8 @@
 namespace Admin\Controller;
 
 use Squille\Core\Collection;
+use Squille\Core\Route;
+use Admin\Domain\PagesDomain;
 use Admin\Domain\PagesCategoriesDomain;
 
 class PagesCategoriesController extends SessionController
@@ -35,28 +37,30 @@ class PagesCategoriesController extends SessionController
     public function bindAction(Collection $args)
     {
         $model = new PagesCategoriesDomain;
-        $model->deleteByCategory($args->get('category'));
 
-        if (is_array($args->get('id'))) {
-            foreach ($args->get('id') as $key => $id) {
-                $e = new \stdClass;
+        $e = new \stdClass;
 
-                $e->page = $args->get('page')[$key];
-                $e->category = $args->get('category');
-                $e->order = $args->get('order')[$key];
-                $e->section = $args->get('section')[$key];
-                $e->component = $args->get('component')[$key];
-                $e->limit = $args->get('limit')[$key];
+        $e->page = $args->get('todas') ? null : $args->get('page');
+        $e->category = $args->get('category');
+        $e->order = $args->get('order');
+        $e->section = $args->get('section');
+        $e->component = $args->get('component');
+        $e->limit = $args->get('limit') ? $args->get('limit') : null;
 
-                $e = $model->save($e);
-            }
-        }
-
-        if ($args->get('save') == 'continue') {
-            header('Location: /admin/categories/edit/' . $args->get('category'));
-        } else {
-            header('Location: /admin/categories');
-        }
+        $e = $model->save($e);
+        
+        $pagemodel = new PagesDomain;
+        $e->page = $pagemodel->readById($e->page)->title;
+        
+        header('Content-type: text/json');
+        echo json_encode($e);
         exit;
+    }
+    
+    public function unbindAction(Collection $args, Route $route)
+    {
+        $id = $route->getIds()->getFirst();
+        $model = new PagesCategoriesDomain;
+        $model->deleteById($id);
     }
 }

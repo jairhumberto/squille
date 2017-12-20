@@ -41,27 +41,33 @@
 
 <h2>Páginas</h2>
 
-<?php $c = $model->readPagesByCategory($o->id) ?>
-<form action='/admin/pages-categories/bind' method=post>
+<?php $pc = $model->readPagesByCategory($o->id) ?>
+<form action='/admin/pages-categories' method=post>
     <div class='form-body'>
         <table>
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Página</th>
                     <th>Seção</th>
                     <th>Ordem</th>
                     <th>Componente</th>
                     <th>Limite</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
-            <tbody>
-                <?php foreach($c as $pc): ?>
+            <tbody id='tbody'>
+                <?php foreach($pc as $page): ?>
                 <tr>
-                    <td><select></select></td>
-                    <td><select></select></td>
-                    <td><input></td>
-                    <td><select></select></td>
-                    <td><input></td>
+                    <td><?=$page->id?></td>
+                    <td><?=$page->page ? $model->readPageById($page->page)->title : 'Todas'?></td>
+                    <td><?=$page->section?></td>
+                    <td><?=$page->order?></td>
+                    <td><?=$page->component?></td>
+                    <td><?=$page->limit?></td>
+                    <td>
+                        <a href='#' onclick='remove_page(this.parentNode.parentNode, "/admin/pages-categories/unbind/<?=$page->id?>", event)'>Excluir</a>
+                    </td>
                 </tr>
                 <?php endforeach ?>
             </tbody>
@@ -70,7 +76,52 @@
         <br>
 
         <div class='form-actions'>
-            <a href='#'>Adicionar</a>
+            <a href='#' onclick='add_row(document.getElementById("tbody"), event)'>Adicionar</a>
         </div>
     </div>
 </form>
+
+<!-- Table row. -->
+<template id='page'>
+    <tr>
+        <td>#</td>
+        
+        <td>
+            <input type='hidden' name='category' value='<?=$o->id?>'/>
+            <input type='checkbox' name='todas' value='1' title='todas'/>
+            <select name='page' onchange='fill_section_component(this, "categories")'>
+                <option value=''>Selecione...</option>
+                <?php $pages = $model->readPages() ?>
+                <?php foreach($pages as $page): ?>
+                    <option value='<?=$page->id?>'><?=$page->title?></option>
+                <?php endforeach ?>
+            </select>
+        </td>
+        
+        <td class='section'>
+            <select name='section' disabled>
+                <option value=''>Selecione...</option>
+            </select>
+        </td>
+        
+        <td>
+            <input name='order'/>
+        </td>
+        
+        <td class='component'>
+            <select name='component' disabled>
+                <option value=''>Selecione...</option>
+            </select>
+        </td>
+        
+        <td>
+            <input name='limit'/>
+        </td>
+        
+        <td>
+            <a href='#' onclick='save_page(this.parentNode.parentNode, "categories", event)'>Salvar</a>
+            <a href='#' onclick='remove_row(this.parentNode.parentNode, event)'>Excluir</a>
+        </td>
+    </tr>
+</template>
+<!-- Table row. -->

@@ -99,8 +99,8 @@
                 <field Field="id" Type="int(11)" Null="NO" Key="PRI" Default="" Extra="" Comment=""/>
                 <field Field="page" Type="int(11)" Null="YES" Key="" Default="" Extra="" Comment=""/>
                 <field Field="category" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
+                <field Field="section" Type="varchar(255)" Charset="utf8" Collation="utf8_general_ci" Null="NO" Key="" Default="" Extra="" Comment=""/>
                 <field Field="order" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
-                <field Field="layout" Type="varchar(255)" Charset="utf8" Collation="utf8_general_ci" Null="NO" Key="" Default="" Extra="" Comment=""/>
                 <field Field="component" Type="varchar(255)" Charset="utf8" Collation="utf8_general_ci" Null="NO" Key="" Default="" Extra="" Comment=""/>
                 <field Field="limit" Type="int(11)" Null="YES" Key="" Default="" Extra="" Comment=""/>
             </fields>
@@ -134,8 +134,8 @@
                 <field Field="id" Type="int(11)" Null="NO" Key="PRI" Default="" Extra="" Comment=""/>
                 <field Field="page" Type="int(11)" Null="YES" Key="" Default="" Extra="" Comment=""/>
                 <field Field="content" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
-                <field Field="order" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
                 <field Field="section" Type="varchar(255)" Charset="utf8" Collation="utf8_general_ci" Null="NO" Key="" Default="" Extra="" Comment=""/>
+                <field Field="order" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
                 <field Field="component" Type="varchar(255)" Charset="utf8" Collation="utf8_general_ci" Null="NO" Key="" Default="" Extra="" Comment=""/>
             </fields>
             <indexes>
@@ -168,8 +168,8 @@
                 <field Field="id" Type="int(11)" Null="NO" Key="PRI" Default="" Extra="" Comment=""/>
                 <field Field="page" Type="int(11)" Null="YES" Key="" Default="" Extra="" Comment=""/>
                 <field Field="menu" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
-                <field Field="order" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
                 <field Field="section" Type="varchar(255)" Charset="utf8" Collation="utf8_general_ci" Null="NO" Key="" Default="" Extra="" Comment=""/>
+                <field Field="order" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
                 <field Field="component" Type="varchar(255)" Charset="utf8" Collation="utf8_general_ci" Null="NO" Key="" Default="" Extra="" Comment=""/>
             </fields>
             <indexes>

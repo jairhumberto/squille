@@ -28,35 +28,38 @@
 namespace Admin\Controller;
 
 use Squille\Core\Collection;
+use Squille\Core\Route;
+use Admin\Domain\PagesDomain;
 use Admin\Domain\PagesContentsDomain;
 
 class PagesContentsController extends SessionController
 {
     public function bindAction(Collection $args)
     {
-        header('Content-type:text/plain');
         $model = new PagesContentsDomain;
-        $model->deleteByContent($args->get('content'));
 
-        if (is_array($args->get('id'))) {
-            foreach ($args->get('id') as $key => $id) {
-                $e = new \stdClass;
+        $e = new \stdClass;
 
-                $e->page = $args->get('page')[$key];
-                $e->content = $args->get('content');
-                $e->order = $args->get('order')[$key];
-                $e->section = $args->get('section')[$key];
-                $e->component = $args->get('component')[$key];
+        $e->page = $args->get('todas') ? null : $args->get('page');
+        $e->content = $args->get('content');
+        $e->order = $args->get('order');
+        $e->section = $args->get('section');
+        $e->component = $args->get('component');
 
-                $e = $model->save($e);
-            }
-        }
+        $e = $model->save($e);
+        
+        $pagemodel = new PagesDomain;
+        $e->page = $pagemodel->readById($e->page)->title;
 
-        if ($args->get('save') == 'continue') {
-            header('Location: /admin/contents/edit/' . $args->get('content'));
-        } else {
-            header('Location: /admin/contents');
-        }
+        header('Content-type: text/json');
+        echo json_encode($e);
         exit;
+    }
+    
+    public function unbindAction(Collection $args, Route $route)
+    {
+        $id = $route->getIds()->getFirst();
+        $model = new PagesContentsDomain;
+        $model->deleteById($id);
     }
 }

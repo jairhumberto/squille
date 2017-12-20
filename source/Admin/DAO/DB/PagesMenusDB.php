@@ -54,16 +54,16 @@ class PagesMenusDB extends DAODB
                     id = :id,
                     page = :page,
                     menu = :menu,
-                    `order` = :order,
                     section = :section,
+                    `order` = :order,
                     component = :component');
 
         $e->id = $this->getNextIndex();
         $stm->bindParam(':id', $e->id, PDO::PARAM_INT);
         $stm->bindParam(':page', $e->page, PDO::PARAM_INT);
         $stm->bindParam(':menu', $e->menu, PDO::PARAM_INT);
-        $stm->bindParam(':order', $e->order, PDO::PARAM_INT);
         $stm->bindParam(':section', $e->section, PDO::PARAM_STR);
+        $stm->bindParam(':order', $e->order, PDO::PARAM_INT);
         $stm->bindParam(':component', $e->component, PDO::PARAM_STR);
 
         $stm->execute();
@@ -75,8 +75,8 @@ class PagesMenusDB extends DAODB
                 UPDATE pagesmenus SET
                     page = :page,
                     menu = :menu,
-                    `order` = :order,
                     section = :section,
+                    `order` = :order,
                     component = :component
                 WHERE
                     id = :id
@@ -84,8 +84,8 @@ class PagesMenusDB extends DAODB
 
         $stm->bindParam(':page', $e->page, PDO::PARAM_INT);
         $stm->bindParam(':menu', $e->menu, PDO::PARAM_INT);
-        $stm->bindParam(':order', $e->order, PDO::PARAM_INT);
         $stm->bindParam(':section', $e->section, PDO::PARAM_STR);
+        $stm->bindParam(':order', $e->order, PDO::PARAM_INT);
         $stm->bindParam(':component', $e->component, PDO::PARAM_STR);
         $stm->bindParam(':id', $e->id, PDO::PARAM_INT);
 
@@ -96,6 +96,13 @@ class PagesMenusDB extends DAODB
     {
         $stm = $this->connection->prepare('DELETE FROM pagesmenus WHERE menu = :menu');
         $stm->bindParam(':menu', $menu, PDO::PARAM_INT);
+        $stm->execute();
+    }
+
+    public function deleteById($id)
+    {
+        $stm = $this->connection->prepare('DELETE FROM pagesmenus WHERE id = :id');
+        $stm->bindParam(':id', $id, PDO::PARAM_INT);
         $stm->execute();
     }
 
