@@ -33,6 +33,11 @@ return array(
         '/admin' => 'Admin'
     ),
 
+    // Assets domain
+    'assets' => array(
+        'domain' => 'assets.portal.site'
+    ),
+
     // Squille database basic configurations.
     'database' => array(
         'dbhost' => 'server',

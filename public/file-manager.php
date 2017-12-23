@@ -116,7 +116,7 @@ function mimetype($file) {
 }
 
 function recursiveunlink($dir) {
-    if (substr($dir, -1) != "/") $dir .= "/";
+    if (substr($dir, -1) != DIRECTORY_SEPARATOR) $dir .= DIRECTORY_SEPARATOR;
 
     $hd = opendir($dir);
     while (false !== ($file = readdir($hd))) {
@@ -134,19 +134,20 @@ function recursiveunlink($dir) {
 }
 
 try {
-    if (!@file_exists(sprintf(__DIR__ . '/assets%s', !$_POST['url'])) || preg_match('~^/?\.{1,2}/|/\.{1,2}/|/\.{1,2}$~', $_POST["url"]) || !$_POST["url"]) {
-        $url = "/";
+    $check_pattern = '~^' . DIRECTORY_SEPARATOR . '?\.{1,2}' . DIRECTORY_SEPARATOR . '|' . DIRECTORY_SEPARATOR . '\.{1,2}' . DIRECTORY_SEPARATOR . '|' . DIRECTORY_SEPARATOR . '\.{1,2}$~';
+    if (!@file_exists(sprintf(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'assets%s', !$_POST['url'])) || preg_match($check_pattern, $_POST["url"]) || !$_POST["url"]) {
+        $url = DIRECTORY_SEPARATOR;
     } else {
         if ($_POST['url'] == 'NaN' || $_POST['url'] == 'null' || $_POST['url'] == 'undefined') {
-            $url = "/";
+            $url = DIRECTORY_SEPARATOR;
         } else {
             $url = $_POST["url"];
         }
     }
 
-    if (substr($url, -1) != "/") $url .= "/";
+    if (substr($url, -1) != DIRECTORY_SEPARATOR) $url .= DIRECTORY_SEPARATOR;
 
-    $pasta = sprintf(__DIR__ . '/assets%s', $url);
+    $pasta = sprintf(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'assets%s', $url);
 
     switch(@$_POST["opt"]) {
         case 1: // Nova pasta.
@@ -226,13 +227,17 @@ try {
 
     $xml .= "<arquivos>";
     if (is_array(@$arquivos)) {
+        $config = require(dirname($_SERVER['DOCUMENT_ROOT'])
+                         . DIRECTORY_SEPARATOR . 'source'
+                         . DIRECTORY_SEPARATOR . 'config.php');
+        $rootDir = $config['assets']['domain'];
         foreach ($arquivos as $arquivo) {
             $xml .= sprintf("<arquivo name='%s' tamanho='%d bytes' type='%s' url='%s' mime='%s'/>",
                     $arquivo,
                     filesize($pasta . $arquivo),
                     str_replace("/", "_", mimetype($arquivo)),
                     strtolower(preg_replace('~^([a-zA-Z]+).*$~', '$1',
-                            $_SERVER["SERVER_PROTOCOL"])) . "://192.168.1.3/assets" . $url . $arquivo,
+                            $_SERVER["SERVER_PROTOCOL"])) . "://" . $rootDir . str_replace(DIRECTORY_SEPARATOR, '/', $url) . $arquivo,
                     FileMimeType($pasta . $arquivo)
             );
         }

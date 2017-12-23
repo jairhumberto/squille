@@ -40,7 +40,7 @@ class FilesController extends SessionController
         $view = $this->getViewFactory()->create('index/layout.phtml');
 
         $contentView = $this->getViewFactory()->create('files/index.phtml');
-        $contentView->addVariable('urlinicial', '/');
+        $contentView->addVariable('urlinicial', DIRECTORY_SEPARATOR);
         $view->addVariable('content', $contentView);
 
         $view->display();
@@ -55,7 +55,7 @@ class FilesController extends SessionController
             $view = $this->getViewFactory()->create('index/layout.phtml');
 
             $contentView = $this->getViewFactory()->create('files/index.phtml');
-            $contentView->addVariable('urlinicial', ($_POST['navurl'] ? $_POST['navurl'] : '/'));
+            $contentView->addVariable('urlinicial', ($_POST['navurl'] ? $_POST['navurl'] : DIRECTORY_SEPARATOR));
             $view->addVariable('content', $contentView);
 
             $view->display();

@@ -25,12 +25,12 @@
  * SOFTWARE.
  */
 ?>
-<link href='http://192.168.1.3/assets/system/admin/file-manager/css/common.css' rel=stylesheet>
+<link href='/admin/components/file-manager/css/style.css' rel=stylesheet>
 <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css' rel=stylesheet>
 
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js'></script>
 <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'></script>
-<script src='http://192.168.1.3/assets/system/admin/file-manager/js/library.js'></script>
+<script src='/admin/components/file-manager/js/library.js'></script>
 
 <h2>Gerenciador de Arquivos</h2>
 
@@ -38,29 +38,29 @@
     <?=$erros?>
     <div class='controles'>
         <ul class='nav'>
-            <li><a href='#' onclick='historico(-1);return false'><img src='http://192.168.1.3/assets/system/admin/file-manager/img/botao_voltar.png' onmouseover='this.src="http://192.168.1.3/assets/system/admin/file-manager/img/botao_voltar_hover.png"' onmouseout='this.src="http://192.168.1.3/assets/system/admin/file-manager/img/botao_voltar.png"'/></a></li>
-            <li><a href='#' onclick='historico(1);return false'><img src='http://192.168.1.3/assets/system/admin/file-manager/img/botao_avancar.png' onmouseover='this.src="http://192.168.1.3/assets/system/admin/file-manager/img/botao_avancar_hover.png"' onmouseout='this.src="http://192.168.1.3/assets/system/admin/file-manager/img/botao_avancar.png"'/></a></li>
+            <li><a href='#' onclick='historico(-1);return false'><img src='/admin/components/file-manager/img/botao_voltar.png' onmouseover='this.src="/admin/components/file-manager/img/botao_voltar_hover.png"' onmouseout='this.src="/admin/components/file-manager/img/botao_voltar.png"'/></a></li>
+            <li><a href='#' onclick='historico(1);return false'><img src='/admin/components/file-manager/img/botao_avancar.png' onmouseover='this.src="/admin/components/file-manager/img/botao_avancar_hover.png"' onmouseout='this.src="/admin/components/file-manager/img/botao_avancar.png"'/></a></li>
         </ul>
         <form action='' method='post' class='nav' novalidate>
             <input type='url' name='url' id='navurl' value='<?=$urlinicial?>' />
-            <a href='#' onclick='ir(document.getElementById("navurl").value,1);return false'><img src='http://192.168.1.3/assets/system/admin/file-manager/img/botao_ir.png' onmouseover='this.src="http://192.168.1.3/assets/system/admin/file-manager/img/botao_ir_hover.png"' onmouseout='this.src="http://192.168.1.3/assets/system/admin/file-manager/img/botao_ir.png"'/></a>
-            <img src='http://192.168.1.3/assets/system/admin/file-manager/img/permissoes/000.jpg' class='permissao' alt='permissoes' id='permissao'/>
+            <a href='#' onclick='ir(document.getElementById("navurl").value,1);return false'><img src='/admin/components/file-manager/img/botao_ir.png' onmouseover='this.src="/admin/components/file-manager/img/botao_ir_hover.png"' onmouseout='this.src="/admin/components/file-manager/img/botao_ir.png"'/></a>
+            <img src='/admin/components/file-manager/img/permissoes/000.jpg' class='permissao' alt='permissoes' id='permissao'/>
         </form>
-        <a href='#' onclick='novapasta();return false' class='controles'><img src='http://192.168.1.3/assets/system/admin/file-manager/img/botao_nova_pasta.png' onmouseover='this.src="http://192.168.1.3/assets/system/admin/file-manager/img/botao_nova_pasta_hover.png"' onmouseout='this.src="http://192.168.1.3/assets/system/admin/file-manager/img/botao_nova_pasta.png"'/></a>
-        <a href='#' onclick='excluir();return false' class='controles'><img src='http://192.168.1.3/assets/system/admin/file-manager/img/botao_excluir.png' onmouseover='this.src="http://192.168.1.3/assets/system/admin/file-manager/img/botao_excluir_hover.png"' onmouseout='this.src="http://192.168.1.3/assets/system/admin/file-manager/img/botao_excluir.png"'/></a>
+        <a href='#' onclick='novapasta();return false' class='controles'><img src='/admin/components/file-manager/img/botao_nova_pasta.png' onmouseover='this.src="/admin/components/file-manager/img/botao_nova_pasta_hover.png"' onmouseout='this.src="/admin/components/file-manager/img/botao_nova_pasta.png"'/></a>
+        <a href='#' onclick='excluir();return false' class='controles'><img src='/admin/components/file-manager/img/botao_excluir.png' onmouseover='this.src="/admin/components/file-manager/img/botao_excluir_hover.png"' onmouseout='this.src="/admin/components/file-manager/img/botao_excluir.png"'/></a>
         <form action='/admin/files/upload' method='post' enctype='multipart/form-data' class='upload'>
             <input type='hidden' id='navurlhidden' name='navurl' value=''>
             <button type=button onclick='$(".file-field").trigger("click")'>subir arquivos</button>
             <input type='file' name='arquivo[]' class='file-field' multiple='multiple' size='15'>
             <input type='hidden' name='MAX_FILE_SIZE' value='<?php echo ini_get('upload_max_filesize')?>'>
-            <a href='#' onclick='this.parentNode.submit()'><img src='http://192.168.1.3/assets/system/admin/file-manager/img/botao_enviar.png' onmouseover='this.src="http://192.168.1.3/assets/system/admin/file-manager/img/botao_enviar_hover.png"' onmouseout='this.src="http://192.168.1.3/assets/system/admin/file-manager/img/botao_enviar.png"'/></a>
+            <a href='#' onclick='this.parentNode.submit()'><img src='/admin/components/file-manager/img/botao_enviar.png' onmouseover='this.src="/admin/components/file-manager/img/botao_enviar_hover.png"' onmouseout='this.src="/admin/components/file-manager/img/botao_enviar.png"'/></a>
         </form>
         <div class='aviso'>
             Tamanho máximo por arquivo: <?php echo ini_get('upload_max_filesize')?>B
         </div>
     </div>
     <div class='pasta' id='pasta'>
-        <img src='http://192.168.1.3/assets/system/admin/file-manager/img/grayloading.gif' id='loading'/>
+        <img src='/admin/components/file-manager/img/grayloading.gif' id='loading'/>
     </div>
     <div id='status'></div>
 </div>

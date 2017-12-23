@@ -1,0 +1,188 @@
+@charset 'utf-8';
+
+#explorer {
+    border: 1px solid #d5d5d5;
+}
+    
+#explorer div.controles {
+    background-image: url(../img/ga_controles_bg.png);
+    background-repeat: repeat-x;
+    border-bottom: 1px solid #d5d5d5;
+    padding: 5px;
+    font-size: 0;
+}
+
+#explorer div.controles ul.nav {
+    float: left
+}
+
+#explorer div.controles ul.nav li {
+    list-style: none;
+    display: inline;
+    margin-right: 5px;
+}
+
+#explorer div.controles form.nav * {
+    vertical-align: top;
+}
+
+#explorer div.controles form.nav input {
+    width: calc(100% - 102px);
+    padding-left: 18px;
+    background: white url(../img/nav_url_bg.png) no-repeat 0 0;
+    height: 22px;
+    line-height: 22px;
+    font: 11px monospace;
+    border: 1px solid silver;
+    margin-right: -1px;
+    margin-bottom: 0;
+}
+
+#explorer div.controles form.nav a {
+    margin-right: 5px
+}
+
+#explorer div.controles ul.nav, #explorer div.controles form.nav {
+    margin-bottom: 5px
+}
+
+#explorer div.controles a.controles, #explorer div.controles form.upload {
+    margin-right: 5px
+}
+
+#explorer div.controles form.upload {
+    width: 150px;
+    height: 32px;
+    border: 1px solid #c0c0c0;
+    padding: 3px;
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+}
+
+#explorer div.controles form.upload input.file-field {
+    display: none
+}
+
+#explorer div.controles form.upload a {
+    vertical-align: top
+}
+
+#explorer div.controles form.upload button {
+    width: 115px;
+    margin-right: 3px;
+    vertical-align: top;
+    height: 24px;
+}
+
+#explorer div.controles .aviso {
+    display: inline-block;
+    width: calc(100% - 229px);
+    height: 32px;
+    line-height: 24px;
+    text-align: right;
+    color: #777777;
+    border: 1px solid #c0c0c0;
+    padding: 3px 5px;
+    font-size: 12px;
+    vertical-align: top;
+    overflow: hidden;
+}
+
+#explorer .pasta {
+    height: 347px;
+    overflow: auto;
+}
+
+#explorer .pasta .arquivo, #explorer .pasta .diretorio  {
+    width: 181px;
+    margin: 6px;
+    padding: 5px;
+    float: left;
+}
+
+#explorer .pasta .arquivo:hover, #explorer .pasta .diretorio:hover,
+#explorer .pasta .arquivo.ui-selected, #explorer .pasta .diretorio.ui-selected {
+    background: #D7E8FE
+}
+
+#explorer .pasta .arquivo.ui-selecting, #explorer .pasta .diretorio.ui-selecting {
+    background: #C5DEFC
+}
+
+#explorer .pasta .arquivo img.icone, #explorer .pasta .diretorio img.icone {
+    float: left;
+}
+
+#explorer .pasta .arquivo .descricao, #explorer .pasta .diretorio .descricao {
+    margin-left: 37px;
+}
+
+#loading {
+    margin: 5px;
+}
+
+#explorer #status {
+    height: 40px;
+    background: #EEE;
+}
+
+#explorer #status .informacao {
+    float: left;
+    line-height: 20px;
+    margin: 4px;
+    padding: 5px;
+    border: 1px solid white; 
+    background: #e5e5e5;
+}
+/*
+
+#permission_window {
+    font: 11px sans-serif;
+    position: absolute;
+    width: 222px;
+    border: 1px solid silver;
+    background: white;
+}
+
+#permission_window h1 {
+    font-size: 11px;
+    text-transform: uppercase;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid silver;
+    padding: 0 10px;
+}
+
+#permission_window form {
+    padding: 10px;
+}
+
+#permission_window fieldset {
+    border: 1px solid #ddd;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+#permission_window legend {
+    border: 1px solid #ddd;
+    padding: 1px 5px;
+    width: 178px;
+}
+
+#permission_window label {
+    color: black;
+    float: left;
+    margin-right: 17px;
+}
+
+#permission_window label:last-child {
+    margin: 0;
+}
+
+#permission_window fieldset input {
+    margin: 0 5px 0 0 ;
+    vertical-align: bottom;
+    position: relative;
+    top: -1px;
+}*/

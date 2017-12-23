@@ -76,8 +76,11 @@
         
         for (let i=0; i < elements.length; i++) {
             for (let j=0; j < elements[i].childNodes.length; j++) {
-                console.log(elements[i].childNodes[j].name);
                 if (elements[i].childNodes[j].name) {
+                    if (elements[i].childNodes[j].type === 'checkbox' && !elements[i].childNodes[j].checked) {
+                        elements[i].childNodes[j].value = 0;
+                    }
+                    
                     elements[i].childNodes[j].disabled = true;
                     formData.append(elements[i].childNodes[j].name, elements[i].childNodes[j].value);
                 }
