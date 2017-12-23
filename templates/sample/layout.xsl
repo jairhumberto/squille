@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>
 <!--
  - Squille (https://github.com/jairhumberto/Squille)
  -
@@ -23,7 +24,6 @@
  - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  - SOFTWARE.
  -->
-<?xml version='1.0' encoding='UTF-8'?>
 
 <xsl:transform  version='1.0'
                 xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
