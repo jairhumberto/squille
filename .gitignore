@@ -1,7 +1,7 @@
 composer.lock
 vendor
 
-assets/*
+!assets/LICENSE
 templates/*
 !templates/sample
 
