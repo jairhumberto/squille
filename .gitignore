@@ -3,6 +3,8 @@ vendor
 
 !assets/LICENSE
 templates/*
+
 !templates/sample
+!templates/LICENSE
 
 */config.php
