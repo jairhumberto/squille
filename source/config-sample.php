@@ -35,7 +35,7 @@ return array(
 
     // Assets domain
     'assets' => array(
-        'domain' => 'assets.portal.site'
+        'domain' => 'assets.domain'
     ),
 
     // Squille database basic configurations.
