@@ -44,6 +44,11 @@ class IndexController extends ActionController
         $page = $model->readPageByToken($args->get('path'));
         $view->addVariable('page', $page);
         $view->addVariable('offset', $args->get('offset'));
+        
+        $config = require(dirname($_SERVER['DOCUMENT_ROOT'])
+                 . DIRECTORY_SEPARATOR . 'source'
+                 . DIRECTORY_SEPARATOR . 'config.php');
+        $view->addVariable('config', $config);
 
         // Here for debug reasons.
         // header('Content-type: text/xml');

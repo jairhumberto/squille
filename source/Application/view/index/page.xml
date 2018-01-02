@@ -24,6 +24,12 @@
  - SOFTWARE.
  -->
 <page title='<?=$page->title?>'>
+    <config>
+        <assets>
+            <domain><?=$config['assets']['domain']?></domain>
+        </assets>
+    </config>
+    
     <menus>
         <?php foreach($model->readPageMenus($page->id) as $pagemenu):?>
         <?php $menu = $model->readMenuById($pagemenu->menu) ?>
@@ -38,10 +44,10 @@
     <categories>
         <?php foreach($model->readPageCategories($page->id) as $pagecategory):?>
         <?php $category = $model->readCategoryById($pagecategory->category) ?>
-        <category section='<?=$pagecategory->section?>' component='<?=$pagecategory->component?>' description='<?=$category->description?>'>
+        <category section='<?=$pagecategory->section?>' component='<?=$pagecategory->component?>' description='<?=$category->description?>' limit='<?=$category->limit?>'>
             <contents>
                 <?php foreach($model->readCategoryContents($pagecategory->category, $pagecategory->limit, $offset) as $categorycontent):?>
-                <content>
+                <content description='<?=$categorycontent->description?>'>
                     <?php $content = $model->readContentById($categorycontent->id)?>
                     <date><?=$content->date?></date>
                     <text><?=$content->text?></text>
@@ -54,7 +60,8 @@
 
     <contents>
         <?php foreach($model->readPageContents($page->id) as $pagecontent):?>
-        <content section='<?=$pagecontent->section?>' component='<?=$pagecontent->component?>'>
+        <?php $content = $model->readContentById($pagecontent->content) ?>
+        <content section='<?=$pagecontent->section?>' component='<?=$pagecontent->component?>' description='<?=$content->description?>'>
             <?php $content = $model->readContentById($pagecontent->content)?>
             <date><?=$content->date?></date>
             <text><?=$content->text?></text>

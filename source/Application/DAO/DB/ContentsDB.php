@@ -34,7 +34,7 @@ class ContentsDB extends DAODB
 {
     public function readByCategory($category, $limit, $offset)
     {
-        $stm = $this->connection->prepare('SELECT * FROM contents WHERE category = :category LIMIT :limit OFFSET :offset');
+        $stm = $this->connection->prepare('SELECT * FROM contents WHERE category = :category ORDER BY `date` DESC LIMIT :limit OFFSET :offset');
 
         $stm->bindParam(':category', $category, PDO::PARAM_INT);
         $stm->bindParam(':limit', $limit, PDO::PARAM_INT);
