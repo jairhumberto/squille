@@ -11,5 +11,6 @@ return array(
     '/pages-contents' => 'Admin\Controller\PagesContentsController',
     '/pages' => 'Admin\Controller\PagesController',
     '/pages-menus' => 'Admin\Controller\PagesMenusController',
-    '/files' => 'Admin\Controller\FilesController'
+    '/files' => 'Admin\Controller\FilesController',
+    '/administrators' => 'Admin\Controller\AdministratorsController'
 );
