@@ -75,7 +75,7 @@ class IndexController extends ActionController
         $xsl2->load($_SERVER['DOCUMENT_ROOT']
                   . DIRECTORY_SEPARATOR . '..'
                   . DIRECTORY_SEPARATOR . 'templates'
-                  . DIRECTORY_SEPARATOR . $page->layout
+               // . DIRECTORY_SEPARATOR . $page->layout
                   . DIRECTORY_SEPARATOR . 'components.xsl');
 
         $proc2 = new \XSLTProcessor();

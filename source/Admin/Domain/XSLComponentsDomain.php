@@ -31,21 +31,27 @@ use Admin\DAO\File\XSLComponentsFile;
 
 class XSLComponentsDomain
 {
-    public function readContentsByLayout($layout)
+ // public function readContentsByLayout($layout)
+    public function readContents()
     {
         $dao = new XSLComponentsFile;
-        return $dao->readContentsByLayout($layout);
+     // return $dao->readContentsByLayout($layout);
+        return $dao->readContents();
     }
 
-    public function readCategoriesByLayout($layout)
+ // public function readCategoriesByLayout($layout)
+    public function readCategories()
     {
         $dao = new XSLComponentsFile;
-        return $dao->readCategoriesByLayout($layout);
+     // return $dao->readCategoriesByLayout($layout);
+        return $dao->readCategories();
     }
 
-    public function readMenusByLayout($layout)
+ // public function readMenusByLayout($layout)
+    public function readMenus()
     {
         $dao = new XSLComponentsFile;
-        return $dao->readMenusByLayout($layout);
+     // return $dao->readMenusByLayout($layout);
+        return $dao->readMenus();
     }
 }

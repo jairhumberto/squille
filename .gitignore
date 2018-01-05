@@ -6,5 +6,6 @@ templates/*
 
 !templates/sample
 !templates/LICENSE
+!templates/components.xsl
 
 */config.php

@@ -42,8 +42,8 @@ class XSLLayoutsFile
         $c = new Collection;
         while(($obj = readdir($h)) !== false) {
             if (is_dir($templatedir . DIRECTORY_SEPARATOR . $obj)
-                    && file_exists($templatedir . DIRECTORY_SEPARATOR . $obj . DIRECTORY_SEPARATOR . 'layout.xsl')
-                    && file_exists($templatedir . DIRECTORY_SEPARATOR . $obj . DIRECTORY_SEPARATOR . 'components.xsl')) {
+                    && file_exists($templatedir . DIRECTORY_SEPARATOR . $obj . DIRECTORY_SEPARATOR . 'layout.xsl')) {
+                 // && file_exists($templatedir . DIRECTORY_SEPARATOR . $obj . DIRECTORY_SEPARATOR . 'components.xsl')) {
                 $e = new \stdClass;
                 $e->name = $obj;
                 $c->append($e);

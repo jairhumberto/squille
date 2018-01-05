@@ -12,10 +12,12 @@ class ContentsProxyDomain {
         return $model->read();
     }
 
-    public function readComponentByLayout($layout) {
-        $model = new XSLComponentsDomain;
-        return $model->readContentsByLayout($layout);
-    }
+ // public function readComponentByLayout($layout) {
+    // public function readXSLComponents() {
+        // $model = new XSLComponentsDomain;
+     // // return $model->readContentsByLayout($layout);
+        // return $model->readContents();
+    // }
 
     public function readContentById($id) {
         $model = new ContentsDomain;

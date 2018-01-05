@@ -52,18 +52,24 @@ class PagesProxyDomain
         return $model->readByLayout($layout);
     }
 
-    public function readContentsComponentByLayout($layout) {
+ // public function readContentsComponentByLayout($layout) {
+    public function readXSLContentsComponents() {
         $model = new XSLComponentsDomain;
-        return $model->readContentsByLayout($layout);
+     // return $model->readContentsByLayout($layout);
+        return $model->readContents();
     }
 
-    public function readCategoriesComponentByLayout($layout) {
+ // public function readCategoriesComponentByLayout($layout) {
+    public function readXSLCategoriesComponents() {
         $model = new XSLComponentsDomain;
-        return $model->readCategoriesByLayout($layout);
+     // return $model->readCategoriesByLayout($layout);
+        return $model->readCategories();
     }
 
-    public function readMenusComponentByLayout($layout) {
+ // public function readMenusComponentByLayout($layout) {
+    public function readXSLMenusComponents() {
         $model = new XSLComponentsDomain;
-        return $model->readMenusByLayout($layout);
+     // return $model->readMenusByLayout($layout);
+        return $model->readMenus();
     }
 }

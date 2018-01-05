@@ -59,9 +59,11 @@ class MenusProxyDomain
         return $model->readByLayout($layout);
     }
 
-    public function readComponentByLayout($layout)
-    {
-        $model = new XSLComponentsDomain;
-        return $model->readMenusByLayout($layout);
-    }
+ // public function readComponentByLayout($layout)
+    // public function readXSLComponents()
+    // {
+        // $model = new XSLComponentsDomain;
+     // // return $model->readMenusByLayout($layout);
+        // return $model->readMenus();
+    // }
 }

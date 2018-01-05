@@ -38,21 +38,24 @@
         
         <components>
             <contents>
-                <?php $components = $model->readContentsComponentByLayout($o->layout) ?>
+                <?php // $components = $model->readContentsComponentByLayout($o->layout) ?>
+                <?php $components = $model->readXSLContentsComponents() ?>
                 <?php foreach ($components as $component):?>
                     <component name='<?=$component->name?>'/>
                 <?php endforeach ?>
             </contents>
             
             <categories>
-                <?php $components = $model->readCategoriesComponentByLayout($o->layout) ?>
+                <?php // $components = $model->readCategoriesComponentByLayout($o->layout) ?>
+                <?php $components = $model->readXSLCategoriesComponents() ?>
                 <?php foreach ($components as $component):?>
                     <component name='<?=$component->name?>'/>
                 <?php endforeach ?>
             </categories>
             
             <menus>
-                <?php $components = $model->readMenusComponentByLayout($o->layout) ?>
+                <?php // $components = $model->readMenusComponentByLayout($o->layout) ?>
+                <?php $components = $model->readXSLMenusComponents() ?>
                 <?php foreach ($components as $component):?>
                     <component name='<?=$component->name?>'/>
                 <?php endforeach ?>

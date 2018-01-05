@@ -27,8 +27,10 @@ class CategoriesProxyDomain {
         return $model->readByLayout($layout);
     }
 
-    public function readCategoriesByLayout($layout) {
-        $model = new XSLComponentsDomain;
-        return $model->readCategoriesByLayout($layout);
-    }
+ // public function readCategoriesByLayout($layout) {
+    // public function readXSLComponents() {
+        // $model = new XSLComponentsDomain;
+     // // return $model->readCategoriesByLayout($layout);
+        // return $model->readCategories();
+    // }
 }
