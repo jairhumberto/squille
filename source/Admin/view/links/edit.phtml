@@ -41,6 +41,9 @@
         <?php endforeach ?>
     </select><br>
 
+    <label for='i_order'>Ordem</label>
+    <input type=number value='<?=isset($_POST['order']) ? $_POST['order'] : $o->order?>' placeholder='Digite aqui' name='order' id='i_order'><br>
+
     <label>Tipo</label>
     <label>
     <input type=radio name='tipo' value='interno'

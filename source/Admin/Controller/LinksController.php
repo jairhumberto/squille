@@ -84,6 +84,7 @@ class LinksController extends SessionController
 
         $e->id = $args->get('id');
         $e->menu = $args->get('menu');
+        $e->order = $args->get('order');
         $e->tipo = $args->get('tipo');
         $e->href = $args->get('href');
         $e->text = $args->get('text');

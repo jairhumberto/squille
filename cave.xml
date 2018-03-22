@@ -52,6 +52,7 @@
             <fields>
                 <field Field="id" Type="int(11)" Null="NO" Key="PRI" Default="" Extra="" Comment=""/>
                 <field Field="menu" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
+                <field Field="order" Type="int(11)" Null="NO" Key="" Default="" Extra="" Comment=""/>
                 <field Field="tipo" Type="varchar(255)" Charset="utf8" Collation="utf8_general_ci" Null="NO" Key="" Default="" Extra="" Comment=""/>
                 <field Field="href" Type="varchar(255)" Charset="utf8" Collation="utf8_general_ci" Null="NO" Key="" Default="" Extra="" Comment=""/>
                 <field Field="text" Type="varchar(255)" Charset="utf8" Collation="utf8_general_ci" Null="NO" Key="" Default="" Extra="" Comment=""/>

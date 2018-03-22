@@ -37,6 +37,7 @@
                 <th width='80'>Editar</th>
                 <th width='80'>Excluir</th>
                 <th>Menu</th>
+                <th>Ordem</th>
                 <th>Href</th>
                 <th>Texto</th>
             </tr>
@@ -51,6 +52,7 @@
 
                 <?php $m = $model->readMenuById($o->menu) ?>
                 <td><?=$m->description ?></td>
+                <td><?=$o->order ?></td>
 
                 <td><?=$o->href ?></td>
                 <td><?=$o->text ?></td>
