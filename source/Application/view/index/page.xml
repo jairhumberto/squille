@@ -50,7 +50,7 @@
                 <content description='<?=$categorycontent->description?>'>
                     <?php $content = $model->readContentById($categorycontent->id)?>
                     <date><?=$content->date?></date>
-                    <text><?=$content->text?></text>
+                    <?=$content->text?>
                 </content>
                 <?php endforeach?>
             </contents>
@@ -64,7 +64,7 @@
         <content section='<?=$pagecontent->section?>' component='<?=$pagecontent->component?>' description='<?=$content->description?>'>
             <?php $content = $model->readContentById($pagecontent->content)?>
             <date><?=$content->date?></date>
-            <text><?=$content->text?></text>
+            <?=$content->text?>
         </content>
         <?php endforeach?>
     </contents>
